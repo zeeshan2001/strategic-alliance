@@ -12,7 +12,8 @@ const Header = () => {
           <div className="flex flex-row gap-10 ">
             <h3>Analystic</h3>
             <h3>Docs</h3>
-            <h3>Governances</h3>
+            <h3>Governancesss</h3>
+
           </div>
           <div className="flex flex-row gap-10 items-end">
             <h3>Home</h3>
