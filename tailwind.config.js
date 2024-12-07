@@ -1,9 +1,12 @@
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/@shadcn/ui/dist/**/*.js",
+  ],
   theme: {
     extend: {
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"], 
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },

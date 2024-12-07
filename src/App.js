@@ -1,22 +1,10 @@
 import "./App.css";
-import { Route, BrowserRouter as Router, Routes } from "react-router"; // Use BrowserRouter
-import Home from "./components/pages/Home";
-import About from "./components/pages/About";
-import ContactUs from "./components/pages/ContactUs";
 import Header from "./components/Header";
 import Chart from "./components/Chart";
-
-// function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/about" element={<About />} />
-//         <Route path="/contact" element={<ContactUs />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
+import { categoriesData } from "./utils/commonData";
+import Footer from "./components/Footer"
+import CookieModal from "./components/CookieModal";
+import PromptSection from "./components/PromptSection";
 
 function App() {
   return (
@@ -30,10 +18,27 @@ function App() {
       </div>
 
       {/* Scrollable Content */}
-      <div className="relative h-screen overflow-y-auto p-8 text-white">
+      <div className="relative h-screen overflow-y-auto p-8 ">
         <Header />
+        <PromptSection/>
+        <div className="flex flex-row items-center justify-between w-full ">
+          <div className="flex flex-col w-1/4 items-stretch gap-8 font-poppins text-sm font-normal text-justify text-white hover:scale-110 transition-all duration-300">
+            {categoriesData.slice(0, 4).map((category) => {
+              return <div id={category?.id}><span className="font-semibold " style={{color: category?.color}}>{category?.title}:</span> {category?.description}</div>;
+            })}
+          </div>
+          <div className="w-1/2">
+          <Chart />
+          </div>
+          <div className="flex flex-col w-1/4 gap-8 font-poppins text-sm font-normal text-justify text-white hover:scale-110 transition-all duration-300">
+            {categoriesData.slice(4,8).map((category) => {
+              return <div id={category?.id}><span className="font-semibold" style={{color: category?.color}}>{category?.title}:</span> {category?.description}</div>;
+            })}
+          </div>
+        </div>
 
-        <Chart />
+        <Footer/>
+        <CookieModal/>
       </div>
     </>
   );
