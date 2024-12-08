@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#1d4f4d] text-white py-8 shadow-lg">
+    <footer className="bg-[#1d4f4d] text-white py-8 shadow-lg transition-all duration-300 hover:scale-102">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header Section */}
         

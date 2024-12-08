@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Chart from "./components/Chart";
@@ -5,10 +6,13 @@ import { categoriesData } from "./utils/commonData";
 import Footer from "./components/Footer"
 import CookieModal from "./components/CookieModal";
 import PromptSection from "./components/PromptSection";
+import DescriptionCard from "./components/DescriptionCard";
+import { AppProvider } from "./AppContext";
 
 function App() {
+
   return (
-    <>
+    <AppProvider>
       {/* Static Background */}
       <div className="fixed inset-0 bg-gradient-to-br from-[#306771] to-[#143035] -z-10">
         {/* Glow Spots */}
@@ -36,11 +40,11 @@ function App() {
             })}
           </div>
         </div>
-
+        <DescriptionCard/>
         <Footer/>
         <CookieModal/>
       </div>
-    </>
+      </AppProvider>
   );
 }
 
