@@ -108,7 +108,7 @@ const DescriptionCard = () => {
           {/* About Sector */}
           <div
             style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-            className="flex flex-col w-2/6 rounded-lg shadow-lg p-4 space-y-2"
+            className="flex flex-col w-2/6 rounded-lg shadow-lg p-4 space-y-2 border"
           >
             <h2 className="font-semibold"></h2>
             <p className="text-gray-300">
@@ -134,17 +134,17 @@ const DescriptionCard = () => {
           </div>
 
           {/* Main Content */}
-          <div style={{ backgroundColor: "rgba(255,255,255,0.1)" }} className="flex flex-col flex-1 bg-gray-800 rounded-lg p-6">
+          <div style={{ backgroundColor: "rgba(255,255,255,0.9)" }} className="flex flex-col flex-1 bg-gray-800 rounded-lg p-6">
             <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="bg-[#1d4f4d] p-4 rounded-lg">
+              <div className="bg-[#153863] p-4 rounded-lg">
                 <h3 className="font-medium text-center">Total Services</h3>
                 <h3 className="font-semibold text-center">71</h3>
               </div>
-              <div className="bg-[#1d4f4d] p-4 rounded-lg">
+              <div className="bg-[#153863] p-4 rounded-lg">
                 <h3 className="font-medium text-center">Total Goods</h3>
                 <h3 className="font-semibold text-center">35</h3>
               </div>
-              <div className="bg-[#1d4f4d] p-4 rounded-lg">
+              <div className="bg-[#153863] p-4 rounded-lg">
                 <h3 className="font-medium text-center">Total Investment</h3>
                 <h3 className="font-semibold text-center">130 M</h3>
               </div>

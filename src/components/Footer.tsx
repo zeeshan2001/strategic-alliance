@@ -2,10 +2,10 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#1d4f4d] text-white py-8 shadow-lg transition-all duration-300 hover:scale-102">
+    <footer className="bg-gradient-to-br from-[#122031] to-blue-900 text-white py-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header Section */}
-        
+
 
         {/* Content Section */}
         <div className="grid grid-cols-3 gap-4">

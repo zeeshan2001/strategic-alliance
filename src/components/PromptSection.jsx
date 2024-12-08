@@ -138,7 +138,7 @@ const PromptSection = () => {
   };
 
   return (
-    <div className="w-full flex flex-row gap-10 mt-[100px] mx-auto">
+    <div className="w-full flex flex-row gap-10 mt-[150px] pb-20 px-10 mx-auto">
       <div
         style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
         className="h-1/5 flex flex-col min-h-96 bg-slate-500 gap-5 p-6 rounded shadow-lg"
@@ -156,7 +156,7 @@ const PromptSection = () => {
             type="text"
             style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
             placeholder="Enter Your Prompt"
-            className={`px-4 py-2 border-2 text-lg outline-none transition-all text-white duration-300 ease-in-out ${
+            className={`px-4 py-2 border-2 text-lg outline-none transition-all placeholder:text-gray-200 text-white duration-300 ease-in-out ${
               isFocused ? "border-green-500" : "border-gray-300"
             }`}
             onFocus={() => setIsFocused(true)}
@@ -193,7 +193,7 @@ const PromptSection = () => {
           </div>
         </div>
       </div>
-      <div className="w-2/5 max-w-3xl font-poppins">
+      <div className="w-2/5 max-w-3xl font-poppins shadow-xl">
         <Citation />
       </div>
     </div>
