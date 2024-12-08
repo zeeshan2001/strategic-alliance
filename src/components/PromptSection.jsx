@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Citation from "./Citation";
 
 const historyData = [
   <h2 className="font-bold text-xl mb-3">Response</h2>,
@@ -140,15 +141,17 @@ const PromptSection = () => {
     <div className="w-full flex flex-row gap-10 mt-[100px] mx-auto">
       <div
         style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-        className="h-full flex flex-col min-h-96 bg-slate-500 gap-5 p-6 rounded shadow-lg"
+        className="h-1/5 flex flex-col min-h-96 bg-slate-500 gap-5 p-6 rounded shadow-lg"
       >
-        <p className="text-white">Ask a new question</p>
-        <p className="text-white">History</p>
-        <p className="text-white">Data provenance</p>
+        <p className="text-white cursor-pointer">Ask a new question</p>
+        <p className="text-white cursor-pointer">History</p>
+        <p className="text-white cursor-pointer">Data provenance</p>
       </div>
-      <div className="w-full max-w-3xl mt-2 font-poppins">
+      <div className="w-2/5 max-w-3xl font-poppins">
         <div className="flex flex-col gap-5">
-          <h3 className="text-white">How can I assist you today?</h3>
+          <h3 className="text-white text-lg font-bold">
+            How can I assist you today?
+          </h3>
           <input
             type="text"
             style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
@@ -189,6 +192,9 @@ const PromptSection = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="w-2/5 max-w-3xl font-poppins">
+        <Citation />
       </div>
     </div>
   );
