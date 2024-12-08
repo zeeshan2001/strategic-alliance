@@ -59,6 +59,27 @@ const historyData = [
   </div>,
 ];
 
+const citationData = [
+  <img src="/images/citation.png" alt="Citation" />,
+  <h3 className="text-white text-lg font-bold p-5">Related</h3>,
+  <p className="text-white border-t border-gray-300 border-solid mt-4 pt-2 cursor-pointer p-5">
+    How will the National Investment Strategy impact Saudi Arabia's economy by
+    2030
+  </p>,
+  <p className="text-white border-t border-gray-300 border-solid mt-4 pt-2 cursor-pointer p-5">
+    What are the main sectors targeted by the National Investment Strategy
+  </p>,
+  <p className="text-white border-t border-gray-300 border-solid mt-4 pt-2 cursor-pointer p-5">
+    How does the National Investment Strategy align with Vision 2030
+  </p>,
+  <p className="text-white border-t border-gray-300 border-solid mt-4 pt-2 cursor-pointer p-5">
+    What measures are being taken to attract foreign direct investment
+  </p>,
+  <p className="text-white border-t border-gray-300 border-solid mt-4 pt-2 cursor-pointer p-5">
+    How will the strategy enhance innovation and local content development
+  </p>,
+];
+
 const PromptSection = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [input, setInput] = useState("");
@@ -68,6 +89,9 @@ const PromptSection = () => {
   const [loadingCompleted, setLoadingCompleted] = useState(false);
   const [loadingMessages, setLoadingMessages] = useState([]);
   const [loadingIndex, setLoadingIndex] = useState(0);
+  const [citationIndex, setCitationIndex] = useState(0);
+  const [loadingHistory, setLoadingHistory] = useState(true);
+  const [citationOutput, setCitationOutput] = useState([]);
 
   const loadingSteps = [
     <h2 className="font-bold text-xl">Search</h2>,
@@ -108,7 +132,7 @@ const PromptSection = () => {
       const timeout = setTimeout(() => {
         setLoadingMessages((prev) => [...prev, loadingSteps[loadingIndex]]);
         setLoadingIndex((prev) => prev + 1);
-      }, 1000);
+      }, 300);
       return () => clearTimeout(timeout);
     } else if (loadingIndex >= loadingSteps.length) {
       setLoading(false);
@@ -117,14 +141,26 @@ const PromptSection = () => {
   }, [loading, loadingIndex]);
 
   useEffect(() => {
-    if (loadingCompleted && currentIndex < historyData.length) {
+    if (!loading && loadingCompleted && currentIndex < historyData.length) {
       const timeout = setTimeout(() => {
         setOutput((prev) => [...prev, historyData[currentIndex]]);
         setCurrentIndex((prev) => prev + 1);
-      }, 500);
+      }, 300);
+      return () => clearTimeout(timeout);
+    } else if (currentIndex >= historyData.length) {
+      setLoadingHistory(false);
+    }
+  }, [currentIndex, loadingCompleted, loadingHistory]);
+
+  useEffect(() => {
+    if (!loading && !loadingHistory && citationIndex < citationData.length) {
+      const timeout = setTimeout(() => {
+        setCitationOutput((prev) => [...prev, citationData[citationIndex]]);
+        setCitationIndex((prev) => prev + 1);
+      }, 300);
       return () => clearTimeout(timeout);
     }
-  }, [currentIndex, loadingCompleted]);
+  }, [citationIndex, loadingHistory]);
 
   const handleInput = (e) => {
     if (e.key === "Enter" && input.trim()) {
@@ -132,8 +168,11 @@ const PromptSection = () => {
       setCurrentIndex(0);
       setLoading(true);
       setLoadingCompleted(false);
+      setLoadingHistory(true);
       setLoadingMessages([]);
+      setCitationOutput([]);
       setLoadingIndex(0);
+      setCitationIndex(0);
     }
   };
 
@@ -194,7 +233,12 @@ const PromptSection = () => {
         </div>
       </div>
       <div className="w-2/5 max-w-3xl font-poppins">
-        <Citation />
+        <h3 className="text-white text-lg font-bold mb-5">Citation</h3>
+        <div style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
+          {citationOutput.map((item, index) => (
+            <div key={index}>{item}</div>
+          ))}
+        </div>
       </div>
     </div>
   );
