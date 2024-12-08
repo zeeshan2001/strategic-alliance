@@ -1,5 +1,7 @@
 import { ResponsivePie } from "@nivo/pie";
 import { categoriesData } from "../utils/commonData";
+import { useContext } from "react";
+import { AppContext } from "../AppContext";
 
 const Chart = () => {
   // const data = [
@@ -52,9 +54,10 @@ const Chart = () => {
   //     content: "Sectoral Content",
   //   },
   // ];
+  const { setSectionId } = useContext(AppContext);
 
   const handleClick = (data) => {
-    alert(`Clicked on: ${data.title}\nContent: ${data.description}`);
+    setSectionId(data?.data?.id);
   };
 
   return (
