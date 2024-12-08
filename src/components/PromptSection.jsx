@@ -1,39 +1,105 @@
 import { useState, useEffect } from "react";
 
-const dummyData = {
-  history: [
-    "History is the study of past events, particularly in human affairs.",
-    "The ancient civilizations of Mesopotamia, Egypt, and the Indus Valley are among the earliest known human societies.",
-    "The Industrial Revolution of the 18th and 19th centuries marked a major turning point in history, transforming societies worldwide.",
-    "World War I and II reshaped the geopolitical landscape of the 20th century.",
-    "The digital revolution has profoundly impacted communication, culture, and commerce globally.",
-  ],
-  royal: [
-    "Saudi Arabia is a country in the Middle East known for its vast deserts and rich history.",
-    "It was established in 1932 by King Abdulaziz Ibn Saud, uniting various tribal territories into one nation.",
-    "The Kingdom is home to Islam's two holiest cities, Mecca and Medina, attracting millions of pilgrims annually.",
-    "Saudi Arabia's economy heavily relies on oil, as it is one of the world's leading oil producers.",
-    "Recent reforms under Vision 2030 aim to diversify the economy and modernize the nation.",
-  ],
-};
+const historyData = [
+  <h2 className="font-bold text-xl mb-3">Response</h2>,
+  <div className="my-2">
+    <p className="font-light">
+      The Saudi National Investment Strategy (NIS) is a key initiative aimed at
+      improving the investment climate in Saudi Arabia in line with Vision 2030.
+    </p>
+  </div>,
+  <div className="my-2">
+    <strong>Core Objectives:</strong>
+  </div>,
+  <div className="my-2">
+    <strong>- Economic Diversification:</strong>
+    <p className="font-light">
+      The NIS seeks to reduce oil dependency by promoting sectors like green
+      energy, technology, healthcare, and logistics.
+    </p>
+  </div>,
+  <div className="my-2">
+    <strong>- Investment Growth:</strong>
+    <p className="font-light">
+      The strategy aims to triple investment levels from 2019 by 2030 and
+      significantly boost foreign direct investment (FDI).
+    </p>
+  </div>,
+  <div className="my-2">
+    <strong>- Private Sector Empowerment:</strong>
+    <p className="font-light">
+      It targets increasing the private sector's GDP contribution from 22% in
+      2019 to 30% by 2030.
+    </p>
+  </div>,
+  <div className="my-2">
+    <strong>Strategic Initiatives:</strong>
+  </div>,
+  <div className="my-2">
+    <strong>- Sectoral Focus:</strong>
+    <p className="font-light">
+      The NIS prioritizes renewable energy, digital infrastructure, tourism,
+      healthcare, and logistics.
+    </p>
+  </div>,
+  <div className="my-2">
+    <strong>- Infrastructure Development:</strong>
+    <p className="font-light">
+      Major projects like the NEOM mega-city are planned to attract investments
+      and create jobs.
+    </p>
+  </div>,
+  <div className="my-2">
+    <strong>- Regulatory Environment:</strong>
+    <p className="font-light">
+      Establishing special economic zones with favorable regulations aims to
+      enhance business operations and attract more investments.
+    </p>
+  </div>,
+];
 
 const PromptSection = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [lines, setLines] = useState([]);
+  const [output, setOutput] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [loadingCompleted, setLoadingCompleted] = useState(false); // New state
+  const [loadingCompleted, setLoadingCompleted] = useState(false);
   const [loadingMessages, setLoadingMessages] = useState([]);
   const [loadingIndex, setLoadingIndex] = useState(0);
 
   const loadingSteps = [
-    "Searching internal repositories for your query...",
-    "Scanning local documents, data repositories, and internal systems...",
-    "Summarizing results...",
-    "Cross-referencing sources...",
-    "Compiling response...",
+    <h2 className="font-bold text-xl">Search</h2>,
+    <div>
+      <strong>
+        Searching internal repositories for: Information about MISA in Saudi
+        Arabia
+      </strong>
+    </div>,
+    <div className="font-light text-gray-400">
+      Scanning local documents, data repositories, and internal systems...
+    </div>,
+    <div className="mt-3">
+      <div>
+        <strong>Summarizing NATIONAL INVESTMENT STRATEGY</strong>
+      </div>
+      <div className="font-light text-gray-400 ">
+        Collecting insights from internal knowledge bases and relevant files...
+      </div>
+    </div>,
+    <div className="mt-3">
+      <div>
+        <strong>Status Messages</strong>
+      </div>
+      <div className="mt-2">
+        <strong>Status Messages</strong>
+      </div>
+      <ul className="font-light italic list-disc ml-3 mb-5">
+        <li>Currently processing..</li>
+        <li>Scanning results...</li>
+        <li>Cross-referencing sources...</li>
+      </ul>
+    </div>,
   ];
 
   useEffect(() => {
@@ -45,29 +111,26 @@ const PromptSection = () => {
       return () => clearTimeout(timeout);
     } else if (loadingIndex >= loadingSteps.length) {
       setLoading(false);
-      setLoadingCompleted(true); // Mark loading as completed
+      setLoadingCompleted(true);
     }
   }, [loading, loadingIndex]);
 
   useEffect(() => {
-    if (loadingCompleted && lines.length > 0 && currentIndex < lines.length) {
+    if (loadingCompleted && currentIndex < historyData.length) {
       const timeout = setTimeout(() => {
-        setOutput((prev) => `${prev}\n${lines[currentIndex]}`);
+        setOutput((prev) => [...prev, historyData[currentIndex]]);
         setCurrentIndex((prev) => prev + 1);
       }, 500);
       return () => clearTimeout(timeout);
     }
-  }, [lines, currentIndex, loadingCompleted]);
+  }, [currentIndex, loadingCompleted]);
 
   const handleInput = (e) => {
     if (e.key === "Enter" && input.trim()) {
-      setOutput("");
-      setLines(
-        dummyData[input.toLowerCase()] || ["No data found for your query."]
-      );
+      setOutput([]);
       setCurrentIndex(0);
       setLoading(true);
-      setLoadingCompleted(false); // Reset loading completion
+      setLoadingCompleted(false);
       setLoadingMessages([]);
       setLoadingIndex(0);
     }
@@ -101,18 +164,25 @@ const PromptSection = () => {
           <div className="relative">
             <div
               style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-              className="px-4 min-h-40 py-4 border-2 text-lg outline-none transition-all duration-300 ease-in-out font-light hover:border-green-500"
+              className={`px-4 outline-none transition-all duration-300 ease-in-out hover:border-green-500 ${
+                loading || loadingCompleted ? "py-4" : ""
+              }`}
             >
               <div>
                 {loading && <h4 className="text-green-500">Loading...</h4>}
                 {loadingMessages.map((message, index) => (
-                  <p key={index} className="text-white animate-pulse">
+                  <p
+                    key={index}
+                    className={`text-white ${
+                      !loadingCompleted ? "animate-pulse" : ""
+                    }`}
+                  >
                     {message}
                   </p>
                 ))}
               </div>
               <div className="text-white">
-                {output.split("\n").map((line, index) => (
+                {output.map((line, index) => (
                   <p key={index}>{line}</p>
                 ))}
               </div>
