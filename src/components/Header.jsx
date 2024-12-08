@@ -14,16 +14,22 @@ import Navigation from "./Navigation";
 
 const Header = () => {
   return (
-    <header className=" text-white font-normal text-base py-7 mx-14 h-[90px]">
+    <header className=" text-white font-normal text-base pb-7 bt-1 mx-14 h-[50px]">
       <div className="mx-auto flex justify-between items-center">
         <h1 className="text-2xl font-bold">
           <img src="/images/logo.svg" />
         </h1>
-        <div className="flex flex-col justify-end gap-8 items-end">
+        <div className="flex flex-col justify-end items-end">
           <div className="flex flex-row gap-10 ">
-            <h3>Misa</h3>
-            <h3>Invest Saudi</h3>
-            <h3>About</h3>
+            <h3>
+              <a href="#">MISA</a>
+            </h3>
+            <h3>
+              <a href="#">Invest Saudi</a>
+            </h3>
+            <h3>
+              <a href="#">About</a>
+            </h3>
           </div>
 
           <Navigation />
