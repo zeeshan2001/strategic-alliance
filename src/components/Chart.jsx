@@ -61,9 +61,8 @@ const Chart = () => {
   };
 
   return (
-    <div style={{ height: 800 }} className="mt-10 font-poppins max-w-[800px]">
+    <div style={{ height: 700 }} className="font-poppins  max-w-[800px]">
       <ResponsivePie
-        className="bg-slate-700"
         data={categoriesData}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
         innerRadius={0.4}
