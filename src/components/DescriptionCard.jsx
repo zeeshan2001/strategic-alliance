@@ -4,6 +4,9 @@ import MyHeatMap from "./Charts/HeatMap";
 import DetailsModal from "./DetailsModal";
 import { heatMapData } from "../utils/heatMapData";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
+import { geoMapData } from "../utils/geoMapData";
+import { ResponsiveChoropleth } from "@nivo/geo";
+
 const DescriptionCard = () => {
   const { sectionId } = useContext(AppContext);
   const [activeTabId, setActiveTabId] = useState(1);
@@ -141,16 +144,16 @@ const DescriptionCard = () => {
       total_investment: "130M",
     },
   };
-  if (sectionId > 0) {
+  if (sectionId > 0 && sectionId !== 2) {
     return (
       <div className="bg-[#343537] w-full p-14">
         {sectionId === 6 ||
         sectionId === 7 ||
         sectionId === 8 ||
-        sectionId === 5 ? (
+        sectionId === 5  || sectionId === 3 ? (
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {(sectionId == 6 || sectionId === 7) &&
+              {(sectionId == 6 || sectionId === 7 || sectionId === 3) &&
                 sectionCardsData?.documentation?.map((item, index) => (
                   <div
                     style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
@@ -259,7 +262,6 @@ const DescriptionCard = () => {
             {/* Header */}
             <div className="p-4 text-center font-bold text-4xl">
               {sectionId === 1 && "Sector Dashboard"}
-              {sectionId === 2 && "External Data Dashboard"}
               {sectionId === 3 && "Organization Data Dashboard"}
               {sectionId === 4 && "Country Profiles"}
             </div>
@@ -321,7 +323,7 @@ const DescriptionCard = () => {
               >
                 <h2 className="font-semibold"></h2>
                 <p className="text-gray-300">
-                  {sectionId === 1 || sectionId === 2 || sectionId === 3
+                  {sectionId === 1
                     ? sectionCardsData?.sector_analysis?.about
                     : sectionCardsData?.profiles?.about}
                 </p>
@@ -354,63 +356,67 @@ const DescriptionCard = () => {
                   {/* <h3 className="absolute top-2 left-4 font-medium">Map\Graph</h3> */}
                   <div className="w-full h-[600px] flex items-center justify-center">
                     {/* <MyHeatMap /> */}
-                    <ResponsiveHeatMap
-                      data={heatMapData}
-                      margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
-                      valueFormat=">-.2s"
-                      axisTop={{
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: -90,
-                        legend: "",
-                        legendOffset: 46,
-                        truncateTickAt: 0,
-                      }}
-                      axisRight={{
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: 0,
-                        legend: "country",
-                        legendPosition: "middle",
-                        legendOffset: 70,
-                        truncateTickAt: 0,
-                      }}
-                      axisLeft={{
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: 0,
-                        legend: "country",
-                        legendPosition: "middle",
-                        legendOffset: -72,
-                        truncateTickAt: 0,
-                      }}
-                      colors={{
-                        type: "diverging",
-                        scheme: "red_yellow_blue",
-                        divergeAt: 0.5,
-                        minValue: -100000,
-                        maxValue: 100000,
-                      }}
-                      emptyColor="#555555"
-                      legends={[
-                        {
-                          anchor: "bottom",
-                          translateX: 0,
-                          translateY: 30,
-                          length: 400,
-                          thickness: 8,
-                          direction: "row",
-                          tickPosition: "after",
-                          tickSize: 3,
-                          tickSpacing: 4,
-                          tickOverlap: false,
-                          tickFormat: ">-.2s",
-                          title: "Value →",
-                          titleAlign: "start",
-                          titleOffset: 4,
-                        },
-                      ]}
-                    />
+                    {(sectionId === 1 || sectionId === 4) && (
+                      <ResponsiveHeatMap
+                        data={heatMapData}
+                        margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
+                        valueFormat=">-.2s"
+                        axisTop={{
+                          tickSize: 5,
+                          tickPadding: 5,
+                          tickRotation: -90,
+                          legend: "",
+                          legendOffset: 46,
+                          truncateTickAt: 0,
+                        }}
+                        axisRight={{
+                          tickSize: 5,
+                          tickPadding: 5,
+                          tickRotation: 0,
+                          legend: "country",
+                          legendPosition: "middle",
+                          legendOffset: 70,
+                          truncateTickAt: 0,
+                        }}
+                        axisLeft={{
+                          tickSize: 5,
+                          tickPadding: 5,
+                          tickRotation: 0,
+                          legend: "country",
+                          legendPosition: "middle",
+                          legendOffset: -72,
+                          truncateTickAt: 0,
+                        }}
+                        colors={{
+                          type: "diverging",
+                          scheme: "red_yellow_blue",
+                          divergeAt: 0.5,
+                          minValue: -100000,
+                          maxValue: 100000,
+                        }}
+                        emptyColor="#555555"
+                        legends={[
+                          {
+                            anchor: "bottom",
+                            translateX: 0,
+                            translateY: 30,
+                            length: 400,
+                            thickness: 8,
+                            direction: "row",
+                            tickPosition: "after",
+                            tickSize: 3,
+                            tickSpacing: 4,
+                            tickOverlap: false,
+                            tickFormat: ">-.2s",
+                            title: "Value →",
+                            titleAlign: "start",
+                            titleOffset: 4,
+                          },
+                        ]}
+                        // tooltip={(cell) => `${cell?.id}`}
+                      />
+                    )}
+                   
                   </div>
                   <div className="absolute bottom-4 left-4 flex items-center space-x-2">
                     <span>Sector</span>
