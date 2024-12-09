@@ -152,7 +152,7 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
               className="rounded-xl shadow-lg border p-4 w-1/2 text-white font-extralight text-sm"
             >
               We are thrilled to have you on board and look forward to seeing
-              you thrive in our team. This handbook is designed to familiarize
+              you thrive in our team. <br /><br /> This handbook is designed to familiarize
               you with our company policies, culture, and guidelines to ensure a
               smooth and rewarding experience.
             </p>
@@ -227,19 +227,22 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
 
         <div className="relative bottom-0 left-0 mt-6 grid grid-cols-3 gap-4 text-sm text-white">
           <div className="flex flex-col">
-            <span className="font-medium">Last Update:</span>
-            {(sectionId === 6 || sectionId === 7 || sectionId === 3) && <span>--------</span>}
-            {sectionId === 8 && "December7, 2024"}
+            <div className="font-medium mb-2">Last Update:</div>
+            <div>December7, 2024</div>
+            {/* {(sectionId === 6 || sectionId === 7 || sectionId === 3) && <div>--------</div>}
+            {sectionId === 8 && "December7, 2024"} */}
           </div>
           <div className="flex flex-col">
-            <span className="font-medium">Owner:</span>
-            {(sectionId === 6 || sectionId === 7 || sectionId === 3) && <span>--------</span>}
-            {sectionId === 8 && "Global Transportation Development Team"}{" "}
+            <div className="font-medium mb-2">Owner:</div>
+            <div>Global Transportation Development Team</div>
+            {/* {(sectionId === 6 || sectionId === 7 || sectionId === 3) && <div>--------</div>}
+            {sectionId === 8 && "Global Transportation Development Team"}{" "} */}
           </div>
           <div className="flex flex-col">
-            <span className="font-medium">Contact Owner:</span>
-            {(sectionId === 6 || sectionId === 7 || sectionId === 3) && <span>--------</span>}
-            {sectionId === 8 && "Abdullah"}
+            <div className="font-medium mb-2">Contact Owner:</div>
+            <div>Abdullah</div>
+            {/* {(sectionId === 6 || sectionId === 7 || sectionId === 3) && <span>--------</span>}
+            {sectionId === 8 && "Abdullah"} */}
           </div>
         </div>
       </DialogContent>

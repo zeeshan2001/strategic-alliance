@@ -27,7 +27,7 @@ function App() {
         </div>
 
         <div className="px-8 flex flex-row items-center justify-between w-full shadow-lg bg-[#123235]">
-          <div className="flex flex-col w-1/4 gap-8 font-poppins text-sm font-normal text-justify text-white hover:scale-110 transition-all duration-300">
+          <div className="flex flex-col w-1/4 gap-8 font-poppins text-sm font-normal text-justify text-white hover:scale-110 transition-all duration-300  text-[15px]">
             {categoriesData.slice(0, 4).map((category) => {
               return (
                 <div id={category?.id}>
@@ -45,7 +45,7 @@ function App() {
           <div className="w-1/2">
             <Chart />
           </div>
-          <div className="flex flex-col w-1/4 gap-8 font-poppins text-sm font-normal text-justify text-white hover:scale-110 transition-all duration-300">
+          <div className="flex flex-col w-1/4 gap-8 font-poppins text-sm font-normal text-justify text-white hover:scale-110 transition-all duration-300 text-[15px]">
             {categoriesData.slice(4, 8).map((category) => {
               return (
                 <div id={category?.id}>
@@ -61,8 +61,8 @@ function App() {
             })}
           </div>
         </div>
-        
-          <DescriptionCard />
+
+        <DescriptionCard />
         <Footer />
         <CookieModal />
       </div>

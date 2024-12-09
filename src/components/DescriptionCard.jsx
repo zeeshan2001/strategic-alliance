@@ -150,7 +150,8 @@ const DescriptionCard = () => {
         {sectionId === 6 ||
         sectionId === 7 ||
         sectionId === 8 ||
-        sectionId === 5  || sectionId === 3 ? (
+        sectionId === 5 ||
+        sectionId === 3 ? (
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {(sectionId == 6 || sectionId === 7 || sectionId === 3) &&
@@ -260,8 +261,8 @@ const DescriptionCard = () => {
         ) : (
           <div className="flex flex-col h-screen text-white w-full mx-auto">
             {/* Header */}
-            <div className="p-4 text-center font-bold text-4xl">
-              {sectionId === 1 && "Sector Dashboard"}
+            <div className="p-4 text-left font-bold text-4xl">
+              {sectionId === 1 && "Sectoral Analysis"}
               {sectionId === 3 && "Organization Data Dashboard"}
               {sectionId === 4 && "Country Profiles"}
             </div>
@@ -416,7 +417,6 @@ const DescriptionCard = () => {
                         // tooltip={(cell) => `${cell?.id}`}
                       />
                     )}
-                   
                   </div>
                   <div className="absolute bottom-4 left-4 flex items-center space-x-2">
                     <span>Sector</span>
