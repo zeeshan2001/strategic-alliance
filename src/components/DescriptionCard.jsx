@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../AppContext";
+import MyHeatMap from "./Charts/HeatMap";
+import GeoMapChart from "./Charts/GeoMap";
 
 const DescriptionCard = () => {
-  const { modalData, setModalData, sectionId } = useContext(AppContext);
-
+  const { sectionId } = useContext(AppContext);
+  const [activeTabId, setActiveTabId] = useState(1);
   const sectionCardsData = {
     documentation: [
       {
@@ -39,6 +41,96 @@ const DescriptionCard = () => {
         owner: "Operations Team",
       },
     ],
+    bussiness_inteligence: [
+      {
+        title: "Opportunities",
+        description:
+          "Identifying and tracking investment opportunities across various sectors and regions.",
+        totalNumber: 35,
+        lastUpdate: "10 March 2023",
+        owner: "Investment Opportunities Team",
+      },
+      {
+        title: "Financial",
+        description:
+          "Comprehensive financial data, including reports, projections, and investment trends.",
+        totalNumber: 20,
+        lastUpdate: "15 January 2024",
+        owner: "Financial Analysis Department",
+      },
+      {
+        title: "Investor Performance",
+        description:
+          "Detailed performance metrics and KPIs of active investments across portfolios.",
+        totalNumber: 18,
+        lastUpdate: "05 November 2022",
+        owner: "Performance Monitoring Unit",
+      },
+      {
+        title: "Investors Service",
+        description:
+          "Profiles and data on existing and potential investors, including engagement history.",
+        totalNumber: 50,
+        lastUpdate: "20 December 2023",
+        owner: "Investor Relations Team",
+      },
+      {
+        title: "IT Service Management",
+        description:
+          "Systems and processes for managing IT services supporting investment workflows.",
+        totalNumber: 10,
+        lastUpdate: "25 March 2023",
+        owner: "IT Support and Service Team",
+      },
+    ],
+    research: [
+      {
+        title: "Academic Research",
+        description:
+          "Research papers and academic studies on global investment trends, policies, and innovations.",
+        totalNumber: 25,
+        lastUpdate: "10 March 2023",
+        owner: "Research and Development Team",
+      },
+      {
+        title: "Market Studies",
+        description:
+          "Comprehensive studies on market behavior, sector performance, and investment opportunities.",
+        totalNumber: 18,
+        lastUpdate: "20 January 2024",
+        owner: "Market Analysis Unit",
+      },
+      {
+        title: "Industry Reports",
+        description:
+          "Reports on various industries detailing growth trends, risks, and investment feasibility.",
+        totalNumber: 30,
+        lastUpdate: "05 November 2022",
+        owner: "Sector Analysis Department",
+      },
+      {
+        title: "Case Studies",
+        description:
+          "Detailed analyses of successful and failed investment projects, highlighting key lessons.",
+        totalNumber: 12,
+        lastUpdate: "15 December 2023",
+        owner: "Strategy and Learning Unit",
+      },
+    ],
+    profiles: {
+      about:
+        "Brazil, with a GDP of $2.2 trillion in 2024 and a population of 216 million, stands as a vital economic powerhouse in Latin America. The country's key industries include agriculture, energy, mining, manufacturing, and tourism, all of which contribute significantly to its economic growth. Brazil's investment climate is shaped by its strategic location as a gateway to Latin America, abundant natural resources, a robust renewable energy sector, and a growing middle class. Despite challenges in ease of doing business (ranked 124th globally), the nation holds a competitive position, ranking 57th on the global competitiveness index. Brazil's economy thrives on its key exports, including soybeans, iron ore, and petroleum, while renewable energy projects, infrastructure development, and the expansion of agribusiness are driving future growth.",
+      total_services: "124",
+      total_goods: "111",
+      total_investment: "130M",
+    },
+    sector_analysis: {
+      about:
+        "The global transportation sector is essential for international trade and economic activity, facilitating the movement of goods and people. It accounts for about $10 trillion in annual economic activity, with road transport dominating both freight and passenger mobility at over 70% of global logistics. Railways, though smaller at 1.3 million kilometers, are vital for bulk goods in major countries like the U.S., China, and Russia. Aviation connects over 22,000 city pairs and generates $850 billion, while maritime transport handles 80% of global trade, shipping 11 billion tons through over 5,000 ports. Investment in the sector is increasingly focused on sustainable solutions, including green logistics and high-speed rail, aimed at reducing carbon emissions. Technologies like IoT, blockchain, and AI for route optimization are enhancing efficiency. Urban areas are benefiting from micro-mobility services, while rural regions see improvements in connectivity. The sector’s alignment with global goals, such as the UN Sustainable Development Goals, emphasizes resilience and sustainability, shaping the future of economies.",
+      total_services: "124",
+      total_goods: "111",
+      total_investment: "130M",
+    },
   };
 
   const data = [
@@ -65,44 +157,162 @@ const DescriptionCard = () => {
     },
   ];
 
-  if (sectionId === 6 || sectionId === 7) {
+  if (
+    sectionId === 6 ||
+    sectionId === 7 ||
+    sectionId === 8 ||
+    sectionId === 5
+  ) {
     return (
-      <div className="max-w-6xl mx-auto p-6 mb-5">
+      <div className="max-w-6xl mx-auto p-6 mb-5 pt-16 pb-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {sectionCardsData?.documentation.map((item, index) => (
-            <div
-              style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-              key={index}
-              className="min-h-60 shadow-lg rounded-xl hover:scale-105 cursor-pointer transition-all duration-300 p-5 hover:shadow-xl"
-            >
-              <h3 className="text-xl font-semibold text-white mb-5">
-                {item.title}
-              </h3>
-              <p className="text-white mb-4 text-base">{item.description}</p>
-              <p className="text-white mb-2 text-sm">
-                Total Number: &nbsp;
-                <span className="font-thin text-base">{item.totalNumber}</span>
-              </p>
-              <p className="text-white mb-2 text-base">
-                Last Update: &nbsp;
-                <span className="font-thin text-base">{item.lastUpdate}</span>
-              </p>
-              <p className="text-white mb-2 text-base">
-                Owner: &nbsp;{" "}
-                <span className="font-thin text-base">{item.owner}</span>
-              </p>
-            </div>
-          ))}
+          {(sectionId == 6 ||
+            sectionId === 7) &&
+              sectionCardsData?.documentation?.map((item, index) => (
+                <div
+                  style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+                  key={index}
+                  className="min-h-60 shadow-lg rounded-xl hover:scale-105 cursor-pointer transition-all duration-300 p-5 hover:shadow-xl"
+                >
+                  <h3 className="text-xl font-semibold text-white mb-5">
+                    {item.title}
+                  </h3>
+                  <p className="text-white mb-4 text-base">
+                    {item.description}
+                  </p>
+                  <p className="text-white mb-2 text-sm">
+                    Total Number: &nbsp;
+                    <span className="font-thin text-base">
+                      {item.totalNumber}
+                    </span>
+                  </p>
+                  <p className="text-white mb-2 text-base">
+                    Last Update: &nbsp;
+                    <span className="font-thin text-base">
+                      {item.lastUpdate}
+                    </span>
+                  </p>
+                  <p className="text-white mb-2 text-base">
+                    Owner: &nbsp;{" "}
+                    <span className="font-thin text-base">{item.owner}</span>
+                  </p>
+                </div>
+              ))}
+          {sectionId === 8 &&
+            sectionCardsData?.bussiness_inteligence?.map((item, index) => (
+              <div
+                style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+                key={index}
+                className="min-h-60 shadow-lg rounded-xl hover:scale-105 cursor-pointer transition-all duration-300 p-5 hover:shadow-xl"
+              >
+                <h3 className="text-xl font-semibold text-white mb-5">
+                  {item.title}
+                </h3>
+                <p className="text-white mb-4 text-base">{item.description}</p>
+                <p className="text-white mb-2 text-sm">
+                  Total Number: &nbsp;
+                  <span className="font-thin text-base">
+                    {item.totalNumber}
+                  </span>
+                </p>
+                <p className="text-white mb-2 text-base">
+                  Last Update: &nbsp;
+                  <span className="font-thin text-base">{item.lastUpdate}</span>
+                </p>
+                <p className="text-white mb-2 text-base">
+                  Owner: &nbsp;{" "}
+                  <span className="font-thin text-base">{item.owner}</span>
+                </p>
+              </div>
+            ))}
+
+          {sectionId === 5 &&
+            sectionCardsData?.research?.map((item, index) => (
+              <div
+                style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+                key={index}
+                className="min-h-60 shadow-lg rounded-xl hover:scale-105 cursor-pointer transition-all duration-300 p-5 hover:shadow-xl"
+              >
+                <h3 className="text-xl font-semibold text-white mb-5">
+                  {item.title}
+                </h3>
+                <p className="text-white mb-4 text-base">{item.description}</p>
+                <p className="text-white mb-2 text-sm">
+                  Total Number: &nbsp;
+                  <span className="font-thin text-base">
+                    {item.totalNumber}
+                  </span>
+                </p>
+                <p className="text-white mb-2 text-base">
+                  Last Update: &nbsp;
+                  <span className="font-thin text-base">{item.lastUpdate}</span>
+                </p>
+                <p className="text-white mb-2 text-base">
+                  Owner: &nbsp;{" "}
+                  <span className="font-thin text-base">{item.owner}</span>
+                </p>
+              </div>
+            ))}
         </div>
       </div>
     );
-  } else if (sectionId === 1) {
+  } else if (sectionId === 1 || sectionId === 4) {
     return (
       <div className="flex flex-col h-screen text-white w-full mx-auto p-6 mb-16">
         {/* Header */}
         <div className="p-4 text-center font-bold text-4xl">
-          Sector Dashboard
+          {sectionId === 1 && "Sector Dashboard"}
+          {sectionId === 4 && "Country Profiles"}
         </div>
+        {sectionId === 4 && (
+          <div className="flex justify-end w-full pr-8">
+            <div
+              style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+              className="flex flex-row rounded-lg shadow-xl p-4 border gap-4"
+            >
+              <button
+                onClick={() => setActiveTabId(1)}
+                style={{
+                  backgroundColor:
+                    activeTabId === 1 ? "#153863" : "rgba(255,255,255,0.1)",
+                }}
+                className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
+              >
+                Country
+              </button>
+              <button
+                onClick={() => setActiveTabId(2)}
+                style={{
+                  backgroundColor:
+                    activeTabId === 2 ? "#153863" : "rgba(255,255,255,0.1)",
+                }}
+                className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
+              >
+                Investor
+              </button>
+              <button
+                onClick={() => setActiveTabId(3)}
+                style={{
+                  backgroundColor:
+                    activeTabId === 3 ? "#153863" : "rgba(255,255,255,0.1)",
+                }}
+                className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
+              >
+                Opportunity
+              </button>
+              <button
+                onClick={() => setActiveTabId(4)}
+                style={{
+                  backgroundColor:
+                    activeTabId === 4 ? "#153863" : "rgba(255,255,255,0.1)",
+                }}
+                className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
+              >
+                Region
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className="flex flex-1 p-6 gap-6">
           {/* About Sector */}
@@ -112,7 +322,10 @@ const DescriptionCard = () => {
           >
             <h2 className="font-semibold"></h2>
             <p className="text-gray-300">
-              The global transportation sector is essential for international
+              {sectionId === 1
+                ? sectionCardsData?.sector_analysis?.about
+                : sectionCardsData?.profiles?.about}
+              {/* The global transportation sector is essential for international
               trade and economic activity, facilitating the movement of goods
               and people. It accounts for about $10 trillion in annual economic
               activity, with road transport dominating both freight and
@@ -129,12 +342,15 @@ const DescriptionCard = () => {
               micro-mobility services, while rural regions see improvements in
               connectivity. The sector’s alignment with global goals, such as
               the UN Sustainable Development Goals, emphasizes resilience and
-              sustainability, shaping the future of economies.
+              sustainability, shaping the future of economies. */}
             </p>
           </div>
 
           {/* Main Content */}
-          <div style={{ backgroundColor: "rgba(255,255,255,0.9)" }} className="flex flex-col flex-1 bg-gray-800 rounded-lg p-6">
+          <div
+            style={{ backgroundColor: "rgba(255,255,255,0.9)" }}
+            className="flex flex-col flex-1 bg-gray-800 rounded-lg p-6"
+          >
             <div className="grid grid-cols-3 gap-4 mb-6">
               <div className="bg-[#153863] p-4 rounded-lg">
                 <h3 className="font-medium text-center">Total Services</h3>
@@ -151,8 +367,11 @@ const DescriptionCard = () => {
             </div>
 
             {/* Map/Graph Section */}
-            <div className="flex flex-1 bg-gray-700 rounded-lg relative">
-              <h3 className="absolute top-2 left-4 font-medium">Map\Graph</h3>
+            <div className="flex flex-1 bg-gray-800 rounded-lg relative">
+              {/* <h3 className="absolute top-2 left-4 font-medium">Map\Graph</h3> */}
+              <div className="w-full h-full min-h-[600px] flex items-center justify-center">
+                <MyHeatMap />
+              </div>
               <div className="absolute bottom-4 left-4 flex items-center space-x-2">
                 <span>Sector</span>
                 <div className="flex items-center space-x-2">
@@ -174,7 +393,10 @@ const DescriptionCard = () => {
           </div>
 
           {/* Metadata */}
-          <div style={{ backgroundColor: "rgba(255,255,255,0.1)" }} className="w-1/8 shadow-lg rounded-lg p-4 space-y-4">
+          <div
+            style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+            className="w-1/8 shadow-lg rounded-lg p-4 space-y-4"
+          >
             <div>
               <h3 className="font-medium">Last Update:</h3>
               <p className="text-gray-300">December 7, 2024</p>

@@ -61,7 +61,7 @@ const Chart = () => {
   };
 
   return (
-    <div style={{ height: 700 }} className="font-poppins  max-w-[800px]">
+    <div style={{ height: 700 }} className="font-poppins">
       <ResponsivePie
         data={categoriesData}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -151,12 +151,12 @@ const Chart = () => {
           ({ centerX, centerY }) => (
             <g transform={`translate(${centerX}, ${centerY})`}>
               <image
-                href="/images/group.svg"
+                href="/images/brain.png"
                 className="hover:scale-110 transition-all duration-300 cursor-pointer"
-                width="200"
-                height="200"
-                x="-100"
-                y="-100"
+                width="150"
+                height="150"
+                x="-75"
+                y="-75"
               />
             </g>
           ),
