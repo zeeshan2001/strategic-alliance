@@ -60,21 +60,21 @@ const historyData = [
 
 const citationData = [
   <img src="/images/citation.png" alt="Citation" />,
-  <h3 className="text-white text-lg font-bold p-5">Related</h3>,
-  <p className="text-white border-t border-gray-300 border-solid mt-4 pt-2 cursor-pointer p-5">
+  <h3 className="text-white text-lg font-bold p-3 mt-5 bg-[#ffffff1a]">Related</h3>,
+  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
     How will the National Investment Strategy impact Saudi Arabia's economy by
     2030
   </p>,
-  <p className="text-white border-t border-gray-300 border-solid mt-4 pt-2 cursor-pointer p-5">
+  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
     What are the main sectors targeted by the National Investment Strategy
   </p>,
-  <p className="text-white border-t border-gray-300 border-solid mt-4 pt-2 cursor-pointer p-5">
+  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
     How does the National Investment Strategy align with Vision 2030
   </p>,
-  <p className="text-white border-t border-gray-300 border-solid mt-4 pt-2 cursor-pointer p-5">
+  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
     What measures are being taken to attract foreign direct investment
   </p>,
-  <p className="text-white border-t border-gray-300 border-solid mt-4 pt-2 cursor-pointer p-5">
+  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
     How will the strategy enhance innovation and local content development
   </p>,
 ];
@@ -93,21 +93,21 @@ const PromptSection = () => {
   const [citationOutput, setCitationOutput] = useState([]);
 
   const loadingSteps = [
-    <h2 className="font-bold text-xl">Search</h2>,
+    <h2 className="font-bold text-xl mb-4 mt-[10px]">Search</h2>,
     <div>
       <strong>
         Searching internal repositories for: Information about MISA in Saudi
         Arabia
       </strong>
     </div>,
-    <div className="font-light text-gray-400">
+    <div className="font-light italic mb-5 text-[12px]">
       Scanning local documents, data repositories, and internal systems...
     </div>,
     <div className="mt-3">
       <div>
         <strong>Summarizing NATIONAL INVESTMENT STRATEGY</strong>
       </div>
-      <div className="font-light text-gray-400 ">
+      <div className="font-light italic mb-5 text-[12px]">
         Collecting insights from internal knowledge bases and relevant files...
       </div>
     </div>,
@@ -118,7 +118,7 @@ const PromptSection = () => {
       <div className="mt-2">
         <strong>Status Messages</strong>
       </div>
-      <ul className="font-light italic list-disc ml-3 mb-5">
+      <ul className="font-light italic list-disc ml-3 mb-5 text-[12px]">
         <li>Currently processing..</li>
         <li>Scanning results...</li>
         <li>Cross-referencing sources...</li>
@@ -176,14 +176,15 @@ const PromptSection = () => {
   };
 
   return (
-    <div className="w-full flex flex-row gap-10 mt-[150px] pb-20 px-10 mx-auto">
+    <div className="w-full flex flex-row gap-4 mt-[150px] pt-[50px] pb-20 px-10 mx-auto">
       <div
         style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
         className="h-1/5 flex flex-col min-h-96 bg-slate-500 gap-5 p-6 rounded shadow-lg"
       >
-        <p className="text-white cursor-pointer">Ask a new question</p>
-        <p className="text-white cursor-pointer">History</p>
-        <p className="text-white cursor-pointer">Data provenance</p>
+        <p className="text-white cursor-pointer underline hover:no-underline">Ask a new question</p>
+        <p className="text-white cursor-pointer underline hover:no-underline">History</p>
+        <p className="text-white cursor-pointer underline hover:no-underline">Data provenance</p>
+
       </div>
       <div className="w-2/5 max-w-3xl font-poppins">
         <div className="flex flex-col gap-5">
@@ -204,12 +205,11 @@ const PromptSection = () => {
           />
           <div className="relative">
             <div
-              style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-              className={`px-4 outline-none transition-all duration-300 ease-in-out hover:border-green-500 ${
-                loading || loadingCompleted ? "py-4" : ""
-              }`}
+              className={`outline-none transition-all duration-300 ease-in-out hover:border-green-500`}
             >
-              <div>
+              <div
+              className={` ${loading || loadingCompleted ? 'p-4' : ''}`}
+              style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
                 {loading && <h4 className="text-green-500">Loading...</h4>}
                 {loadingMessages.map((message, index) => (
                   <p
@@ -222,7 +222,8 @@ const PromptSection = () => {
                   </p>
                 ))}
               </div>
-              <div className="text-white">
+              <div className={`text-white mt-5 ${!loading && loadingCompleted ? 'p-4' : ''}`}
+              style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
                 {output.map((line, index) => (
                   <p key={index}>{line}</p>
                 ))}
@@ -233,7 +234,7 @@ const PromptSection = () => {
       </div>
       <div className="w-2/5 max-w-3xl font-poppins">
         <h3 className="text-white text-lg font-bold mb-5">Citation</h3>
-        <div style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
+        <div>
           {citationOutput.map((item, index) => (
             <div key={index}>{item}</div>
           ))}
