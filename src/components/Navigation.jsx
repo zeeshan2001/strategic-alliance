@@ -17,7 +17,7 @@ const Navigation = () => {
           <NavigationMenuItem key={menu.id} className="relative font-bold">
             <NavigationMenuTrigger className="text-base">{menu.title}</NavigationMenuTrigger>
             <NavigationMenuContent className="absolute left-0 w-full">
-              <div className="p-4 bg-gradient-to-tl from-[#122031] to-blue-900 min-w-[300px] rounded border-0 shadow-lg font-poppins">
+              <div className="p-4 bg-[#4d4e50] min-w-[300px] rounded border-0 shadow-xl font-poppins">
                 {menu.subMenu.map((sub) => (
                   <div key={sub.id} className="mb-4">
                     <h3 className="text-lg text-white">{sub.title}</h3>

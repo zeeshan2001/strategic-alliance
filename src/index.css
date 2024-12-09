@@ -64,3 +64,20 @@ code {
     --ring: 216 34% 17%;
   }
 }
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #e1eaf3;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1daf4;
+  border-radius: 30px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ccd2e6;
+}

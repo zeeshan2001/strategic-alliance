@@ -17,7 +17,7 @@ const CookieModal = () => {
 
   return (
     isVisible && (
-      <div className="fixed bottom-4 left-4 bg-[#1a3a3f] text-white p-6 rounded-lg shadow-lg w-[440px]">
+      <div className="fixed bottom-4 left-4 bg-[#4d4e50] text-white p-6 rounded-lg shadow-lg w-[440px]">
         <h2 className="text-xl font-semibold mb-4">
           BEFORE YOU CONTINUE TO DATA DYNAMO
         </h2>

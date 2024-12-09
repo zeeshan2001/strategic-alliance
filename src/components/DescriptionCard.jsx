@@ -1,11 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
 import MyHeatMap from "./Charts/HeatMap";
-import GeoMapChart from "./Charts/GeoMap";
-
+import DetailsModal from "./DetailsModal";
+import { heatMapData } from "../utils/heatMapData";
+import { ResponsiveHeatMap } from "@nivo/heatmap";
 const DescriptionCard = () => {
   const { sectionId } = useContext(AppContext);
   const [activeTabId, setActiveTabId] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    console.log("clikefd");
+
+    setIsModalOpen(true);
+  };
+  const closeModal = () => setIsModalOpen(false);
   const sectionCardsData = {
     documentation: [
       {
@@ -132,288 +141,323 @@ const DescriptionCard = () => {
       total_investment: "130M",
     },
   };
-
-  const data = [
-    {
-      id: 1,
-      title: "Compliance & Guidelines",
-      description:
-        "This is a detailed description for Compliance & Guidelines.",
-    },
-    {
-      id: 2,
-      title: "Employee Handbook",
-      description: "This is a detailed description for Employee Handbook.",
-    },
-    {
-      id: 3,
-      title: "MISA Policies",
-      description: "This is a detailed description for MISA Policies.",
-    },
-    {
-      id: 4,
-      title: "SOPs",
-      description: "This is a detailed description for SOPS.",
-    },
-  ];
-
-  if (
-    sectionId === 6 ||
-    sectionId === 7 ||
-    sectionId === 8 ||
-    sectionId === 5
-  ) {
+  if (sectionId > 0) {
     return (
-      <div className="max-w-6xl mx-auto p-6 mb-5 pt-16 pb-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {(sectionId == 6 ||
-            sectionId === 7) &&
-              sectionCardsData?.documentation?.map((item, index) => (
+      <div className="bg-[#343537] w-full p-14">
+        {sectionId === 6 ||
+        sectionId === 7 ||
+        sectionId === 8 ||
+        sectionId === 5 ? (
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {(sectionId == 6 || sectionId === 7) &&
+                sectionCardsData?.documentation?.map((item, index) => (
+                  <div
+                    style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+                    key={index}
+                    onClick={openModal}
+                    className="min-h-60 shadow-lg rounded-xl hover:scale-105 cursor-pointer transition-all duration-300 p-5 hover:shadow-xl"
+                  >
+                    <h3 className="text-xl font-semibold text-white mb-5">
+                      {item.title}
+                    </h3>
+                    <p className="text-white mb-4 text-base">
+                      {item.description}
+                    </p>
+                    <p className="text-white mb-2 text-sm">
+                      Total Number: &nbsp;
+                      <span className="font-thin text-base">
+                        {item.totalNumber}
+                      </span>
+                    </p>
+                    <p className="text-white mb-2 text-base">
+                      Last Update: &nbsp;
+                      <span className="font-thin text-base">
+                        {item.lastUpdate}
+                      </span>
+                    </p>
+                    <p className="text-white mb-2 text-base">
+                      Owner: &nbsp;{" "}
+                      <span className="font-thin text-base">{item.owner}</span>
+                    </p>
+                  </div>
+                ))}
+              {sectionId === 8 &&
+                sectionCardsData?.bussiness_inteligence?.map((item, index) => (
+                  <div
+                    style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+                    key={index}
+                    onClick={openModal}
+                    className="min-h-60 shadow-lg rounded-xl hover:scale-105 cursor-pointer transition-all duration-300 p-5 hover:shadow-xl"
+                  >
+                    <h3 className="text-xl font-semibold text-white mb-5">
+                      {item.title}
+                    </h3>
+                    <p className="text-white mb-4 text-base">
+                      {item.description}
+                    </p>
+                    <p className="text-white mb-2 text-sm">
+                      Total Number: &nbsp;
+                      <span className="font-thin text-base">
+                        {item.totalNumber}
+                      </span>
+                    </p>
+                    <p className="text-white mb-2 text-base">
+                      Last Update: &nbsp;
+                      <span className="font-thin text-base">
+                        {item.lastUpdate}
+                      </span>
+                    </p>
+                    <p className="text-white mb-2 text-base">
+                      Owner: &nbsp;{" "}
+                      <span className="font-thin text-base">{item.owner}</span>
+                    </p>
+                  </div>
+                ))}
+
+              {sectionId === 5 &&
+                sectionCardsData?.research?.map((item, index) => (
+                  <div
+                    style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+                    key={index}
+                    onClick={openModal}
+                    className="min-h-60 shadow-lg rounded-xl hover:scale-105 cursor-pointer transition-all duration-300 p-5 hover:shadow-xl"
+                  >
+                    <h3 className="text-xl font-semibold text-white mb-5">
+                      {item.title}
+                    </h3>
+                    <p className="text-white mb-4 text-base">
+                      {item.description}
+                    </p>
+                    <p className="text-white mb-2 text-sm">
+                      Total Number: &nbsp;
+                      <span className="font-thin text-base">
+                        {item.totalNumber}
+                      </span>
+                    </p>
+                    <p className="text-white mb-2 text-base">
+                      Last Update: &nbsp;
+                      <span className="font-thin text-base">
+                        {item.lastUpdate}
+                      </span>
+                    </p>
+                    <p className="text-white mb-2 text-base">
+                      Owner: &nbsp;{" "}
+                      <span className="font-thin text-base">{item.owner}</span>
+                    </p>
+                  </div>
+                ))}
+            </div>
+            <DetailsModal
+              isOpen={isModalOpen}
+              onClose={closeModal}
+              sectionId={sectionId}
+            />
+          </div>
+        ) : (
+          <div className="flex flex-col h-screen text-white w-full mx-auto">
+            {/* Header */}
+            <div className="p-4 text-center font-bold text-4xl">
+              {sectionId === 1 && "Sector Dashboard"}
+              {sectionId === 2 && "External Data Dashboard"}
+              {sectionId === 3 && "Organization Data Dashboard"}
+              {sectionId === 4 && "Country Profiles"}
+            </div>
+            {sectionId === 4 && (
+              <div className="flex justify-end w-full pr-8">
                 <div
                   style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                  key={index}
-                  className="min-h-60 shadow-lg rounded-xl hover:scale-105 cursor-pointer transition-all duration-300 p-5 hover:shadow-xl"
+                  className="flex flex-row rounded-lg shadow-xl p-4 border gap-4"
                 >
-                  <h3 className="text-xl font-semibold text-white mb-5">
-                    {item.title}
-                  </h3>
-                  <p className="text-white mb-4 text-base">
-                    {item.description}
-                  </p>
-                  <p className="text-white mb-2 text-sm">
-                    Total Number: &nbsp;
-                    <span className="font-thin text-base">
-                      {item.totalNumber}
-                    </span>
-                  </p>
-                  <p className="text-white mb-2 text-base">
-                    Last Update: &nbsp;
-                    <span className="font-thin text-base">
-                      {item.lastUpdate}
-                    </span>
-                  </p>
-                  <p className="text-white mb-2 text-base">
-                    Owner: &nbsp;{" "}
-                    <span className="font-thin text-base">{item.owner}</span>
-                  </p>
+                  <button
+                    onClick={() => setActiveTabId(1)}
+                    style={{
+                      backgroundColor:
+                        activeTabId === 1 ? "#123235" : "rgba(255,255,255,0.1)",
+                    }}
+                    className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
+                  >
+                    Country
+                  </button>
+                  <button
+                    onClick={() => setActiveTabId(2)}
+                    style={{
+                      backgroundColor:
+                        activeTabId === 2 ? "#123235" : "rgba(255,255,255,0.1)",
+                    }}
+                    className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
+                  >
+                    Investor
+                  </button>
+                  <button
+                    onClick={() => setActiveTabId(3)}
+                    style={{
+                      backgroundColor:
+                        activeTabId === 3 ? "#123235" : "rgba(255,255,255,0.1)",
+                    }}
+                    className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
+                  >
+                    Opportunity
+                  </button>
+                  <button
+                    onClick={() => setActiveTabId(4)}
+                    style={{
+                      backgroundColor:
+                        activeTabId === 4 ? "#123235" : "rgba(255,255,255,0.1)",
+                    }}
+                    className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
+                  >
+                    Region
+                  </button>
                 </div>
-              ))}
-          {sectionId === 8 &&
-            sectionCardsData?.bussiness_inteligence?.map((item, index) => (
-              <div
-                style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                key={index}
-                className="min-h-60 shadow-lg rounded-xl hover:scale-105 cursor-pointer transition-all duration-300 p-5 hover:shadow-xl"
-              >
-                <h3 className="text-xl font-semibold text-white mb-5">
-                  {item.title}
-                </h3>
-                <p className="text-white mb-4 text-base">{item.description}</p>
-                <p className="text-white mb-2 text-sm">
-                  Total Number: &nbsp;
-                  <span className="font-thin text-base">
-                    {item.totalNumber}
-                  </span>
-                </p>
-                <p className="text-white mb-2 text-base">
-                  Last Update: &nbsp;
-                  <span className="font-thin text-base">{item.lastUpdate}</span>
-                </p>
-                <p className="text-white mb-2 text-base">
-                  Owner: &nbsp;{" "}
-                  <span className="font-thin text-base">{item.owner}</span>
-                </p>
               </div>
-            ))}
+            )}
 
-          {sectionId === 5 &&
-            sectionCardsData?.research?.map((item, index) => (
+            <div className="flex flex-1 p-6 gap-6">
+              {/* About Sector */}
               <div
                 style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                key={index}
-                className="min-h-60 shadow-lg rounded-xl hover:scale-105 cursor-pointer transition-all duration-300 p-5 hover:shadow-xl"
+                className="flex flex-col w-2/6 rounded-lg shadow-lg p-4 space-y-2 border"
               >
-                <h3 className="text-xl font-semibold text-white mb-5">
-                  {item.title}
-                </h3>
-                <p className="text-white mb-4 text-base">{item.description}</p>
-                <p className="text-white mb-2 text-sm">
-                  Total Number: &nbsp;
-                  <span className="font-thin text-base">
-                    {item.totalNumber}
-                  </span>
-                </p>
-                <p className="text-white mb-2 text-base">
-                  Last Update: &nbsp;
-                  <span className="font-thin text-base">{item.lastUpdate}</span>
-                </p>
-                <p className="text-white mb-2 text-base">
-                  Owner: &nbsp;{" "}
-                  <span className="font-thin text-base">{item.owner}</span>
+                <h2 className="font-semibold"></h2>
+                <p className="text-gray-300">
+                  {sectionId === 1 || sectionId === 2 || sectionId === 3
+                    ? sectionCardsData?.sector_analysis?.about
+                    : sectionCardsData?.profiles?.about}
                 </p>
               </div>
-            ))}
-        </div>
-      </div>
-    );
-  } else if (sectionId === 1 || sectionId === 4) {
-    return (
-      <div className="flex flex-col h-screen text-white w-full mx-auto p-6 mb-16">
-        {/* Header */}
-        <div className="p-4 text-center font-bold text-4xl">
-          {sectionId === 1 && "Sector Dashboard"}
-          {sectionId === 4 && "Country Profiles"}
-        </div>
-        {sectionId === 4 && (
-          <div className="flex justify-end w-full pr-8">
-            <div
-              style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-              className="flex flex-row rounded-lg shadow-xl p-4 border gap-4"
-            >
-              <button
-                onClick={() => setActiveTabId(1)}
-                style={{
-                  backgroundColor:
-                    activeTabId === 1 ? "#153863" : "rgba(255,255,255,0.1)",
-                }}
-                className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
+
+              {/* Main Content */}
+              <div
+                style={{ backgroundColor: "rgba(255,255,255,0.9)" }}
+                className="flex flex-col flex-1 bg-gray-800 rounded-lg p-6"
               >
-                Country
-              </button>
-              <button
-                onClick={() => setActiveTabId(2)}
-                style={{
-                  backgroundColor:
-                    activeTabId === 2 ? "#153863" : "rgba(255,255,255,0.1)",
-                }}
-                className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
+                <div className="grid grid-cols-3 gap-4 mb-6">
+                  <div className="bg-[#123235] p-4 rounded-lg">
+                    <h3 className="font-medium text-center">Total Services</h3>
+                    <h3 className="font-semibold text-center">71</h3>
+                  </div>
+                  <div className="bg-[#123235] p-4 rounded-lg">
+                    <h3 className="font-medium text-center">Total Goods</h3>
+                    <h3 className="font-semibold text-center">35</h3>
+                  </div>
+                  <div className="bg-[#123235] p-4 rounded-lg">
+                    <h3 className="font-medium text-center">
+                      Total Investment
+                    </h3>
+                    <h3 className="font-semibold text-center">130 M</h3>
+                  </div>
+                </div>
+
+                {/* Map/Graph Section */}
+                <div className="flex flex-1 bg-gray-800 rounded-lg relative">
+                  {/* <h3 className="absolute top-2 left-4 font-medium">Map\Graph</h3> */}
+                  <div className="w-full h-[600px] flex items-center justify-center">
+                    {/* <MyHeatMap /> */}
+                    <ResponsiveHeatMap
+                      data={heatMapData}
+                      margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
+                      valueFormat=">-.2s"
+                      axisTop={{
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: -90,
+                        legend: "",
+                        legendOffset: 46,
+                        truncateTickAt: 0,
+                      }}
+                      axisRight={{
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: 0,
+                        legend: "country",
+                        legendPosition: "middle",
+                        legendOffset: 70,
+                        truncateTickAt: 0,
+                      }}
+                      axisLeft={{
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: 0,
+                        legend: "country",
+                        legendPosition: "middle",
+                        legendOffset: -72,
+                        truncateTickAt: 0,
+                      }}
+                      colors={{
+                        type: "diverging",
+                        scheme: "red_yellow_blue",
+                        divergeAt: 0.5,
+                        minValue: -100000,
+                        maxValue: 100000,
+                      }}
+                      emptyColor="#555555"
+                      legends={[
+                        {
+                          anchor: "bottom",
+                          translateX: 0,
+                          translateY: 30,
+                          length: 400,
+                          thickness: 8,
+                          direction: "row",
+                          tickPosition: "after",
+                          tickSize: 3,
+                          tickSpacing: 4,
+                          tickOverlap: false,
+                          tickFormat: ">-.2s",
+                          title: "Value →",
+                          titleAlign: "start",
+                          titleOffset: 4,
+                        },
+                      ]}
+                    />
+                  </div>
+                  <div className="absolute bottom-4 left-4 flex items-center space-x-2">
+                    <span>Sector</span>
+                    <div className="flex items-center space-x-2">
+                      {Array.from({ length: 8 }).map((_, idx) => (
+                        <span
+                          key={idx}
+                          className="w-6 h-6 bg-gray-500 rounded-full flex items-center justify-center"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="absolute bottom-4 right-4 flex items-center">
+                    <span className="mr-2">Time</span>
+                    <div className="w-40 bg-gray-500 h-1 flex items-center">
+                      <div className="w-4 h-4 bg-gray-300 rounded-full" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Metadata */}
+              <div
+                style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+                className="w-1/8 shadow-lg rounded-lg p-4 space-y-4"
               >
-                Investor
-              </button>
-              <button
-                onClick={() => setActiveTabId(3)}
-                style={{
-                  backgroundColor:
-                    activeTabId === 3 ? "#153863" : "rgba(255,255,255,0.1)",
-                }}
-                className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
-              >
-                Opportunity
-              </button>
-              <button
-                onClick={() => setActiveTabId(4)}
-                style={{
-                  backgroundColor:
-                    activeTabId === 4 ? "#153863" : "rgba(255,255,255,0.1)",
-                }}
-                className="text-white px-4 h-10 py-2 rounded hover:bg-green-600 border"
-              >
-                Region
-              </button>
+                <div>
+                  <h3 className="font-medium">Last Update:</h3>
+                  <p className="text-gray-300">December 7, 2024</p>
+                </div>
+                <div>
+                  <h3 className="font-medium">Owner:</h3>
+                  <p className="text-gray-300">MISA</p>
+                </div>
+                <div>
+                  <h3 className="font-medium">Contact Owner:</h3>
+                  <p className="text-gray-300">Test@test.com</p>
+                </div>
+              </div>
             </div>
           </div>
         )}
-
-        <div className="flex flex-1 p-6 gap-6">
-          {/* About Sector */}
-          <div
-            style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-            className="flex flex-col w-2/6 rounded-lg shadow-lg p-4 space-y-2 border"
-          >
-            <h2 className="font-semibold"></h2>
-            <p className="text-gray-300">
-              {sectionId === 1
-                ? sectionCardsData?.sector_analysis?.about
-                : sectionCardsData?.profiles?.about}
-              {/* The global transportation sector is essential for international
-              trade and economic activity, facilitating the movement of goods
-              and people. It accounts for about $10 trillion in annual economic
-              activity, with road transport dominating both freight and
-              passenger mobility at over 70% of global logistics. Railways,
-              though smaller at 1.3 million kilometers, are vital for bulk goods
-              in major countries like the U.S., China, and Russia. Aviation
-              connects over 22,000 city pairs and generates $850 billion, while
-              maritime transport handles 80% of global trade, shipping 11
-              billion tons through over 5,000 ports. Investment in the sector is
-              increasingly focused on sustainable solutions, including green
-              logistics and high-speed rail, aimed at reducing carbon emissions.
-              Technologies like IoT, blockchain, and AI for route optimization
-              are enhancing efficiency. Urban areas are benefiting from
-              micro-mobility services, while rural regions see improvements in
-              connectivity. The sector’s alignment with global goals, such as
-              the UN Sustainable Development Goals, emphasizes resilience and
-              sustainability, shaping the future of economies. */}
-            </p>
-          </div>
-
-          {/* Main Content */}
-          <div
-            style={{ backgroundColor: "rgba(255,255,255,0.9)" }}
-            className="flex flex-col flex-1 bg-gray-800 rounded-lg p-6"
-          >
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="bg-[#153863] p-4 rounded-lg">
-                <h3 className="font-medium text-center">Total Services</h3>
-                <h3 className="font-semibold text-center">71</h3>
-              </div>
-              <div className="bg-[#153863] p-4 rounded-lg">
-                <h3 className="font-medium text-center">Total Goods</h3>
-                <h3 className="font-semibold text-center">35</h3>
-              </div>
-              <div className="bg-[#153863] p-4 rounded-lg">
-                <h3 className="font-medium text-center">Total Investment</h3>
-                <h3 className="font-semibold text-center">130 M</h3>
-              </div>
-            </div>
-
-            {/* Map/Graph Section */}
-            <div className="flex flex-1 bg-gray-800 rounded-lg relative">
-              {/* <h3 className="absolute top-2 left-4 font-medium">Map\Graph</h3> */}
-              <div className="w-full h-full min-h-[600px] flex items-center justify-center">
-                <MyHeatMap />
-              </div>
-              <div className="absolute bottom-4 left-4 flex items-center space-x-2">
-                <span>Sector</span>
-                <div className="flex items-center space-x-2">
-                  {Array.from({ length: 8 }).map((_, idx) => (
-                    <span
-                      key={idx}
-                      className="w-6 h-6 bg-gray-500 rounded-full flex items-center justify-center"
-                    />
-                  ))}
-                </div>
-              </div>
-              <div className="absolute bottom-4 right-4 flex items-center">
-                <span className="mr-2">Time</span>
-                <div className="w-40 bg-gray-500 h-1 flex items-center">
-                  <div className="w-4 h-4 bg-gray-300 rounded-full" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Metadata */}
-          <div
-            style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-            className="w-1/8 shadow-lg rounded-lg p-4 space-y-4"
-          >
-            <div>
-              <h3 className="font-medium">Last Update:</h3>
-              <p className="text-gray-300">December 7, 2024</p>
-            </div>
-            <div>
-              <h3 className="font-medium">Owner:</h3>
-              <p className="text-gray-300">MISA</p>
-            </div>
-            <div>
-              <h3 className="font-medium">Contact Owner:</h3>
-              <p className="text-gray-300">Test@test.com</p>
-            </div>
-          </div>
-        </div>
       </div>
     );
-  } else return null;
+  } else {
+    return null;
+  }
 };
 
 export default DescriptionCard;

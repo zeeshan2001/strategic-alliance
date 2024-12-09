@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Chart from "./components/Chart";
@@ -18,16 +18,16 @@ function App() {
       <div className="relative h-screen overflow-y-auto">
         <div
           style={{
-            background: "#00b1b2"
-              // "linear-gradient(rgb(0, 150, 178) 60%, rgb(6, 100, 203) 100%)",
+            background: "#343537",
+            // "linear-gradient(rgb(0, 150, 178) 60%, rgb(6, 100, 203) 100%)",
           }}
         >
           <Header />
           <PromptSection />
         </div>
 
-        <div className="px-8 flex flex-row items-center justify-between w-full bg-gradient-to-bl from-[#122031] to-blue-900 shadow-lg">
-          <div className="flex flex-col w-1/4 items-stretch gap-8 font-poppins text-sm font-normal text-justify text-white hover:scale-110 transition-all duration-300">
+        <div className="px-8 flex flex-row items-center justify-between w-full shadow-lg bg-[#123235]">
+          <div className="flex flex-col w-1/4 gap-8 font-poppins text-sm font-normal text-justify text-white hover:scale-110 transition-all duration-300">
             {categoriesData.slice(0, 4).map((category) => {
               return (
                 <div id={category?.id}>
@@ -61,16 +61,18 @@ function App() {
             })}
           </div>
         </div>
-        <div
+        {
+
+        }<div
+        className=""
           style={{
             background:
-              "linear-gradient(rgb(0, 150, 178) 60%, rgb(6, 100, 203) 100%)",
+              "#343537",
           }}
-          className="pb-1"
         >
           <DescriptionCard />
-          <Footer />
         </div>
+        <Footer />
         <CookieModal />
       </div>
     </AppProvider>
