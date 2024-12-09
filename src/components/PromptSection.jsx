@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Citation from "./Citation";
 
 const historyData = [
   <h2 className="font-bold text-xl mb-3">Response</h2>,
@@ -232,7 +231,6 @@ const PromptSection = () => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       <div className="w-2/5 max-w-3xl font-poppins">
         <h3 className="text-white text-lg font-bold mb-5">Citation</h3>
         <div style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
@@ -240,10 +238,6 @@ const PromptSection = () => {
             <div key={index}>{item}</div>
           ))}
         </div>
-=======
-      <div className="w-2/5 max-w-3xl font-poppins shadow-xl">
-        <Citation />
->>>>>>> 8f35351d99b298a29642f1d272706c550c2c554c
       </div>
     </div>
   );
