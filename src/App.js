@@ -61,17 +61,8 @@ function App() {
             })}
           </div>
         </div>
-        {
-
-        }<div
-        className=""
-          style={{
-            background:
-              "#343537",
-          }}
-        >
+        
           <DescriptionCard />
-        </div>
         <Footer />
         <CookieModal />
       </div>

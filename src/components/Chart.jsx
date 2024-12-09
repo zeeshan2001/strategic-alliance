@@ -4,56 +4,7 @@ import { useContext } from "react";
 import { AppContext } from "../AppContext";
 
 const Chart = () => {
-  // const data = [
-  //   {
-  //     id: "Research & Studies",
-  //     value: 10,
-  //     color: "#1C75BC",
-  //     content: "Research Content",
-  //   },
-  //   {
-  //     id: "Policies & Procedures",
-  //     value: 10,
-  //     color: "#00C45A",
-  //     content: "Policies Content",
-  //   },
-  //   {
-  //     id: "Documentation",
-  //     value: 10,
-  //     color: "#D43F97",
-  //     content: "Docs Content",
-  //   },
-  //   {
-  //     id: "Data & BI",
-  //     value: 10,
-  //     color: "#895EA7",
-  //     content: "Data Content",
-  //   },
-  //   {
-  //     id: "Country Profiles",
-  //     value: 10,
-  //     color: "#3EC3DB",
-  //     content: "Country Content",
-  //   },
-  //   {
-  //     id: "Organizational Data",
-  //     value: 10,
-  //     color: "#F8962F",
-  //     content: "Org Data Content",
-  //   },
-  //   {
-  //     id: "External Data",
-  //     value: 10,
-  //     color: "#8B5E3C",
-  //     content: "External Data Content",
-  //   },
-  //   {
-  //     id: "Sectoral Analysis",
-  //     value: 10,
-  //     color: "#EF4136",
-  //     content: "Sectoral Content",
-  //   },
-  // ];
+
   const { setSectionId } = useContext(AppContext);
 
   const handleClick = (data) => {
@@ -88,19 +39,7 @@ const Chart = () => {
               <p className="text-xs font-normal">{t?.data?.description}</p>
             </div>
           );
-          // return i?.createElement(
-          //   l,
-          //   { style: { color: t?.color } },
-          //   // i?.createElement(s, null, "id"),
-          //   // i?.createElement(d, null, "dasdfd"),
-          //   // i?.createElement(s, null, "value"),
-          //   // i?.createElement(d, null, "dasdf"),
-          //   // i?.createElement(s, null, "formattedValue"),
-          //   // i?.createElement(d, null, "saad"),
-          //   // i?.createElement(s, null, "color"),
-          //   // i?.createElement(d, null, "sad")
-
-          // );
+          
         }}
         arcLabelsTextColor="#ffffff"
         enableArcLinkLabels={false}
