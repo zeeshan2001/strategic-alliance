@@ -66,7 +66,9 @@ const DescriptionCard = () => {
         title: "Opportunities",
         description:
           "Identifying and tracking investment opportunities across various sectors and regions.",
-        totalNumber: 35,
+        totalNumber: "45%",
+        totalNumberTitle:
+          "Investment Opportunities Converted into Active Investments: ",
         lastUpdate: "10 March 2023",
         owner: "Investment Opportunities Team",
       },
@@ -74,7 +76,8 @@ const DescriptionCard = () => {
         title: "Financial",
         description:
           "Comprehensive financial data, including reports, projections, and investment trends.",
-        totalNumber: 20,
+        totalNumber: "12%",
+        totalNumberTitle: "Return on Investment (ROI) of Active Investments :",
         lastUpdate: "15 January 2024",
         owner: "Financial Analysis Department",
       },
@@ -82,7 +85,9 @@ const DescriptionCard = () => {
         title: "Investor Performance",
         description:
           "Detailed performance metrics and KPIs of active investments across portfolios.",
-        totalNumber: 18,
+        totalNumber: "85%",
+        totalNumberTitle:
+          "Percentage of Investors Meeting or Exceeding Performance Benchmarks :",
         lastUpdate: "05 November 2022",
         owner: "Performance Monitoring Unit",
       },
@@ -90,7 +95,8 @@ const DescriptionCard = () => {
         title: "Investors Service",
         description:
           "Profiles and data on existing and potential investors, including engagement history.",
-        totalNumber: 50,
+        totalNumber: "80%",
+        totalNumberTitle: "Investor Satisfaction Score (based on surveys) :",
         lastUpdate: "20 December 2023",
         owner: "Investor Relations Team",
       },
@@ -98,7 +104,9 @@ const DescriptionCard = () => {
         title: "IT Service Management",
         description:
           "Systems and processes for managing IT services supporting investment workflows.",
-        totalNumber: 10,
+        totalNumber: "98%",
+        totalNumberTitle:
+          "System Uptime Percentage for Critical Investment Systems :",
         lastUpdate: "25 March 2023",
         owner: "IT Support and Service Team",
       },
@@ -179,6 +187,14 @@ const DescriptionCard = () => {
       total_investment: "130M",
     },
   };
+
+  const businessSectionHeadingData = [
+    "Investment Opportunities Converted into Active Investments:",
+    "Return on Investment (ROI) of Active Investments:",
+    "Percentage of Investors Meeting or Exceeding Performance Benchmarks:",
+    "Investor Satisfaction Score (based on surveys):",
+    "System Uptime Percentage for Critical Investment Systems",
+  ];
   if (sectionId > 0 && sectionId !== 2) {
     return (
       <div className="bg-[#343537] w-full p-14">
@@ -238,8 +254,15 @@ const DescriptionCard = () => {
                     <p className="text-white mb-4 text-base">
                       {item.description}
                     </p>
-                    <p className="text-white mb-2 text-sm">
-                      Number of Documents: &nbsp;
+                    <p className="text-white mb-2 text-base">
+                      {sectionId === 8 ? (
+                        <span className="font-semibold">
+                          {businessSectionHeadingData[index]}
+                        </span>
+                      ) : (
+                        "Number of Documents:"
+                      )}
+                      &nbsp;
                       <span className="font-thin text-base">
                         {item.totalNumber}
                       </span>
@@ -495,10 +518,13 @@ const DescriptionCard = () => {
               </div>
 
               {/* Metadata */}
-              <div className="w-[340px] shadow-lg rounded-lg p-4 space-y-4  flex justify-between flex-col border bg-[#0000001a]">
+              <div
+                style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+                className="w-[340px] shadow-lg rounded-lg p-4 space-y-4 flex justify-between flex-col"
+              >
                 {sectionId === 4 && (
                   <div className="w-full">
-                    <h2 class="text-xl font-bold text-left text-gray-100 mb-3">
+                    <h2 class="text-xl font-bold text-center text-gray-100 mb-3">
                       Transportation Insights
                     </h2>
 
@@ -508,6 +534,10 @@ const DescriptionCard = () => {
                         eco-friendly transportation modes (Trains, Mopeds).
                       </li>
 
+                      <li class="text-base">
+                        The <b>US</b> shows strong reliance on Subway systems
+                        but struggles with Cars and Boats.
+                      </li>
                       <li class="text-base">
                         The <b>US</b> shows strong reliance on Subway systems
                         but struggles with Cars and Boats.

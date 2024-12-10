@@ -41,6 +41,23 @@ const waveData = [
     label: "Purchased",
   },
 ];
+const tableData = [
+  { category: "Academic Research", name: "Global Trends in Foreign Direct Investment (FDI)" },
+  { category: "Academic Research", name: "Policies Driving Investment Flows into Emerging Markets" },
+  { category: "Academic Research", name: "The Role of Government Incentives in Attracting FDI" },
+  { category: "Industry Reports", name: "Investment Opportunities in the Saudi Arabian Energy Sector" },
+  { category: "Industry Reports", name: "Feasibility of Investments in the Technology Sector" },
+  { category: "Industry Reports", name: "Growth Prospects for Saudi Arabia's Tourism and Hospitality Industry" },
+  { category: "Industry Reports", name: "Real Estate Investment Potential in Saudi Arabia" },
+  { category: "Market Studies", name: "Market Dynamics and Investment Climate in the Middle East" },
+  { category: "Market Studies", name: "Sector Performance in Saudi Arabia's Manufacturing Industry" },
+  { category: "Market Studies", name: "Investment Opportunities in Saudi Arabia’s ICT Sector" },
+  { category: "Market Studies", name: "Regional Investment Outlook: GCC Countries" },
+  { category: "Case Studies", name: "Case Study: Successful Foreign Investment in Saudi Arabia's Vision 2030 Projects" },
+  { category: "Case Studies", name: "Lessons from the Economic Diversification Efforts in the UAE" },
+  { category: "Case Studies", name: "Case Study: Investment Growth in Saudi Arabia’s Renewable Energy Sector" },
+  { category: "Case Studies", name: "Failed Investment Project in Saudi Arabia: Key Takeaways" },
+];
 
 const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
   isOpen,
@@ -69,9 +86,8 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
                 autoFocus={false}
                 style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
                 placeholder="Search here"
-                className={`px-4 py-2 border-2 text-base font-extralight outline-none transition-all placeholder:text-gray-200 text-white duration-300 ease-in-out ${
-                  isFocused ? "border-green-500" : "border-gray-300"
-                }`}
+                className={`px-4 py-2 border-2 text-base font-extralight outline-none transition-all placeholder:text-gray-200 text-white duration-300 ease-in-out ${isFocused ? "border-green-500" : "border-gray-300"
+                  }`}
                 onFocus={() => setIsFocused(true)}
               />
             </div>
@@ -183,41 +199,28 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
               <h2 className="text-xl font-bold mb-4">Relevant Files:</h2>
               <table className="w-full border-collapse border border-teal-700 text-left">
                 <thead>
-                  <tr className="bg-teal-800 text-teal-400">
+                  <tr className="bg-teal-800 text-teal-100">
                     <th className="border border-teal-700 px-4 py-2">
-                      Clickable Files
+                      Category
                     </th>
                     <th className="border border-teal-700 px-4 py-2">
-                      % Match
+                      Name
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="border border-teal-700 px-4 py-2 text-teal-200 hover:text-teal-400 cursor-pointer">
-                      Example 1
-                    </td>
-                    <td className="border border-teal-700 px-4 py-2 text-teal-200">
-                      95%
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border border-teal-700 px-4 py-2 text-teal-200 hover:text-teal-400 cursor-pointer">
-                      Example 2
-                    </td>
-                    <td className="border border-teal-700 px-4 py-2 text-teal-200">
-                      80%
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border border-teal-700 px-4 py-2 text-teal-200 hover:text-teal-400 cursor-pointer">
-                      Example 3
-                    </td>
-                    <td className="border border-teal-700 px-4 py-2 text-teal-200">
-                      70%
-                    </td>
-                  </tr>
+                  {tableData.map((item, index) => (
+                    <tr key={index}>
+                      <td className="border border-teal-700 px-4 py-2 text-teal-100 hover:text-teal-300 cursor-pointer">
+                        {item.category}
+                      </td>
+                      <td className="border border-teal-700 px-4 py-2 text-teal-100">
+                        {item.name}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
+
               </table>
             </div>
           )}
@@ -257,7 +260,7 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
           )}
         </div>
 
-        <div className="relative bottom-0 left-0 mt-6 grid grid-cols-3 gap-4 text-sm text-white">
+        <div className="mt-6 flex text-sm text-white justify-evenly items-center">
           <div className="flex flex-col">
             <div className="font-medium mb-2">Last Update:</div>
             <div>December7, 2024</div>
