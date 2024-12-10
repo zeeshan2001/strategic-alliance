@@ -7,10 +7,13 @@ import { ResponsiveHeatMap } from "@nivo/heatmap";
 
 import { categoriesData } from "../utils/commonData";
 import GeoChart from "./Charts/GeoMap";
+import { ScrollContext } from "../context/ScrollContext";
 const DescriptionCard = () => {
   const { sectionId } = useContext(AppContext);
   const [activeTabId, setActiveTabId] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { targetRef } = useContext(ScrollContext);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -25,6 +28,13 @@ const DescriptionCard = () => {
   //     });
   //   }
   // }, [sectionId]);
+
+  const handleScrollToElement = () => {
+    if (targetRef?.current) {
+      targetRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
   const closeModal = () => setIsModalOpen(false);
   const sectionCardsData = {
     documentation: [
@@ -181,8 +191,11 @@ const DescriptionCard = () => {
   };
   if (sectionId > 0 && sectionId !== 2) {
     return (
-      <div className="bg-[#343537] w-full p-14">
-        <h2 className="p-4 font-bold text-4xl text-white text-center mb-10">
+      <div className="bg-[#343537] w-full p-14" ref={targetRef}>
+        <h2
+          className="p-4 font-bold text-4xl text-white text-center mb-10"
+          onClick={() => handleScrollToElement()}
+        >
           {categoriesData?.[sectionId - 1]?.title}
         </h2>
         {sectionId === 6 ||
@@ -549,8 +562,11 @@ const DescriptionCard = () => {
     );
   } else if (sectionId === 2) {
     return (
-      <div className="bg-[#343537] w-full p-14">
-        <h2 className="p-4 font-bold text-4xl text-white text-center">
+      <div className="bg-[#343537] w-full p-14" ref={targetRef}>
+        <h2
+          className="p-4 font-bold text-4xl text-white text-center"
+          onClick={() => handleScrollToElement()}
+        >
           {categoriesData?.[sectionId - 1]?.title}
         </h2>
         <p className="p-4 font-semibold text-2xl text-red-500 text-center">

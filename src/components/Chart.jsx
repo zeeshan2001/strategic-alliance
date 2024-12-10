@@ -11,11 +11,13 @@ import {
   scrollSpy,
   scroller,
 } from "react-scroll";
+import { ScrollContext } from "../context/ScrollContext";
 
 const Chart = () => {
   const { setSectionId } = useContext(AppContext);
   const chartRef = useRef(null); // Reference to the chart container
   const [isInView, setIsInView] = useState(false); // State to track visibility
+  const { targetRef } = useContext(ScrollContext);
 
   // Intersection Observer to trigger animation on scroll
   useEffect(() => {
@@ -43,16 +45,24 @@ const Chart = () => {
     };
   }, []);
 
+  const handleScrollToElement = () => {
+    if (targetRef?.current) {
+      targetRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
   const handleClick = (data) => {
     setSectionId(data?.data?.id);
-   setTimeout(()=>{
-    scroller.scrollTo("descriptionSection", {
-      // Scroll to the section
-      // duration: 0,
-      // delay: 0,
-      // smooth: "easeInOutQuart", // Smooth scroll effect
-    });
-   },1000)
+    handleScrollToElement();
+    console.log("*clicked", data?.data?.id);
+    setTimeout(() => {
+      scroller.scrollTo("descriptionSection", {
+        // Scroll to the section
+        // duration: 0,
+        // delay: 0,
+        // smooth: "easeInOutQuart", // Smooth scroll effect
+      });
+    }, 1000);
   };
 
   return (
@@ -103,7 +113,11 @@ const Chart = () => {
             ({ dataWithArc, arcGenerator, centerX, centerY }) => {
               // Custom layer
               return (
-                <g>
+                <g
+                  onClick={() => {
+                    console.log("*clicked:");
+                  }}
+                >
                   {dataWithArc?.map((arc) => {
                     const [x, y] = arcGenerator.centroid(arc.arc); // Get the coordinates of the centroid for the arc
 
@@ -120,6 +134,7 @@ const Chart = () => {
                         transform={`translate(${adjustedX}, ${adjustedY})`}
                       >
                         <image
+                          onClick={() => handleScrollToElement()}
                           href={arc?.data?.imgPath} // Replace with your icon path
                           width="40"
                           height="40"
@@ -127,6 +142,7 @@ const Chart = () => {
                           y="-45"
                         />
                         <text
+                          onClick={() => handleScrollToElement()}
                           textAnchor="middle"
                           y="16"
                           style={{
