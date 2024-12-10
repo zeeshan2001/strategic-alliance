@@ -6,6 +6,7 @@ import { heatMapData } from "../utils/heatMapData";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import { geoMapData } from "../utils/geoMapData";
 import { ResponsiveChoropleth } from "@nivo/geo";
+import { categoriesData } from "../utils/commonData";
 
 const DescriptionCard = () => {
   const { sectionId } = useContext(AppContext);
@@ -147,6 +148,9 @@ const DescriptionCard = () => {
   if (sectionId > 0 && sectionId !== 2) {
     return (
       <div className="bg-[#343537] w-full p-14">
+        <h2 className="p-4 font-bold text-4xl text-white text-center mb-10">
+          {categoriesData?.[sectionId - 1]?.title} Dashboard
+        </h2>
         {sectionId === 6 ||
         sectionId === 7 ||
         sectionId === 8 ||
@@ -261,11 +265,7 @@ const DescriptionCard = () => {
         ) : (
           <div className="flex flex-col h-screen text-white w-full mx-auto">
             {/* Header */}
-            <div className="p-4 text-left font-bold text-4xl">
-              {sectionId === 1 && "Sectoral Analysis"}
-              {sectionId === 3 && "Organization Data Dashboard"}
-              {sectionId === 4 && "Country Profiles"}
-            </div>
+
             {sectionId === 4 && (
               <div className="flex justify-end w-full pr-8">
                 <div
@@ -459,6 +459,17 @@ const DescriptionCard = () => {
             </div>
           </div>
         )}
+      </div>
+    );
+  } else if (sectionId === 2) {
+    return (
+      <div className="bg-[#343537] w-full p-14">
+        <h2 className="p-4 font-bold text-4xl text-white text-center">
+          {categoriesData?.[sectionId - 1]?.title} Dashboard
+        </h2>
+        <p className="p-4 font-semibold text-2xl text-red-500 text-center">
+        External data dashboard is under development.
+        </p>
       </div>
     );
   } else {

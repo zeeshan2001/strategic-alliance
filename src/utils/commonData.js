@@ -3,6 +3,7 @@ export const categoriesData = [
     id: 1,
     title: "Sectoral Analysis",
     value: 10,
+    imgPath: "/images/Sectoral Analysis- white.svg",
     color: "#1C75BC",
     description:
       "In-depth examination of industry-specific trends, competitive landscapes, and emerging markets, providing critical insights for sector-focused initiatives.",
@@ -18,6 +19,8 @@ export const categoriesData = [
     title: "External Data",
     value: 10,
     color: "#00C45A",
+    imgPath: "/images/enternal data- white.svg",
+
     description:
       "Aggregated information from external sources such as market trends, competitor analysis, and public sentiment, offering a broader context for informed strategic planning.",
     keyComponents: [
@@ -34,6 +37,8 @@ export const categoriesData = [
     title: "Organizational Data",
     value: 10,
     color: "#D43F97",
+    imgPath: "/images/organistional data- white.svg",
+
     description:
       "Centralized records related to human resources, project management, and internal communications, reflecting the organization's structure, employee management, and internal activities.",
     keyComponents: [
@@ -49,6 +54,8 @@ export const categoriesData = [
     title: "Country Profiles",
     value: 10,
     color: "#895EA7",
+    imgPath: "/images/country profile-white.svg",
+
     description:
       "Detailed data on countries' economic and political climates, demographics, and trade opportunities, supporting targeted international business strategies.",
     keyComponents: [
@@ -63,6 +70,8 @@ export const categoriesData = [
     title: "Research & Studies",
     value: 10,
     color: "#3EC3DB",
+    imgPath: "/images/Research&Studies-White.svg",
+
     description:
       "The compilation of academic research, market studies, and industry reports that provide a foundational understanding and informed perspectives to drive strategic decisions.",
     keyComponents: [
@@ -74,9 +83,11 @@ export const categoriesData = [
   },
   {
     id: 6,
-    title: "Policies & Procedures (Internal)",
+    title: "Policies & Procedures",
     value: 10,
     color: "#F8962F",
+    imgPath: "/images/Policies&Proc.svg",
+
     description:
       "The framework of internal guidelines, SOPs, and compliance standards that govern operations, ensuring consistency, safety, and adherence to organizational values and legal requirements.",
     keyComponents: [
@@ -91,6 +102,8 @@ export const categoriesData = [
     title: "Documentation",
     value: 10,
     color: "#8B5E3C",
+    imgPath: "/images/Documenation-white.svg",
+
     description:
       "A structured repository of essential documents supporting operational clarity and continuity, including internal guidelines, project plans, and strategic initiatives.",
     keyComponents: [
@@ -102,9 +115,11 @@ export const categoriesData = [
   },
   {
     id: 8,
-    title: "Data & Business Intelligence",
+    title: "Data & Business",
     value: 10,
     color: "#EF4136",
+    imgPath: "/images/data&business.png",
+
     description:
       "Comprehensive insights derived from operational, financial, and performance data, empowering decision-makers through robust Business Intelligence tools and analytics.",
     keyComponents: [

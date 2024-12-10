@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { AppContext } from "../AppContext";
 
 const Chart = () => {
-
   const { setSectionId } = useContext(AppContext);
 
   const handleClick = (data) => {
@@ -39,52 +38,110 @@ const Chart = () => {
               <p className="text-xs font-normal">{t?.data?.description}</p>
             </div>
           );
-          
         }}
         arcLabelsTextColor="#ffffff"
         enableArcLinkLabels={false}
-        arcLabel={(d) => `${d?.data?.title}`}
+        // arcLabel={(d) => `saad`}
+        enableArcLabels={false}
         arcLinkLabel={(d) => `${d?.data?.description}`}
         onClick={handleClick}
+        // layers={[
+        //   "arcs",
+        //   "arcLabels",
+        //   ({ arcs }) => {
+        //     if (!categoriesData || categoriesData?.length === 0) {
+        //       console.warn("Arcs are undefined or empty");
+        //       return null;
+        //     }
+
+        //     return (
+        //       <g>
+        //         {categoriesData?.map((arc, index) => {
+        //           // const [x, y] = arc.centroid;
+        //           return (
+        //             <g
+        //               key={arc.id}
+        //               transform={`translate(${index * 10 + 100}, ${40 - 20})`}
+        //             >
+        //               <image
+        //                 href="/images/brain.png"
+        //                 width="50"
+        //                 height="50"
+        //                 x="-25"
+        //                 y="-25"
+        //               />{" "}
+        //               <text
+        //                 textAnchor="middle"
+        //                 y="25"
+        //                 style={{
+        //                   fill: arc.color,
+        //                   fontSize: 12,
+        //                   fontWeight: "bold",
+        //                 }}
+        //               >
+        //                 {arc.title + "saad"}
+        //               </text>
+        //             </g>
+        //           );
+        //         })}
+        //       </g>
+        //     );
+        //   },
+        //   ({ centerX, centerY }) => (
+        //     <g transform={`translate(${centerX}, ${centerY})`}>
+        //       <image
+        //         href="/images/brain.png"
+        //         className="hover:scale-110 transition-all duration-300 cursor-pointer"
+        //         width="150"
+        //         height="150"
+        //         x="-75"
+        //         y="-75"
+        //       />
+        //     </g>
+        //   ),
+        // ]}
         layers={[
-          "arcs", // Default arcs layer
-          "arcLabels", // Default labels on arcs
-          "arcLinkLabels", // Lines connecting labels to arcs
-          "legends", // Default legend
-          ({ centerX, centerY, arcs }) => {
+          "arcs",
+          "arcLabels",
+          ({ dataWithArc, arcGenerator, centerX, centerY }) => {
+            // Custom layer
             return (
-              <foreignObject
-                width="100%"
-                height="100%"
-                style={{
-                  overflow: "visible",
-                  pointerEvents: "none", // Prevent blocking interactions
-                }}
-              >
-                {arcs?.map((arc) => {
-                  const [x, y] = arc.centroid;
+              <g>
+                {dataWithArc?.map((arc) => {
+                  const [x, y] = arcGenerator.centroid(arc.arc); // Get the coordinates of the centroid for the arc
+
+                  // Adjust centroid coordinates (fine-tune position)
+                  const adjustedX = x + centerX;
+                  const adjustedY = y + centerY;
                   return (
-                    <div
-                      key={arc.data.id}
-                      style={{
-                        position: "absolute",
-                        top: `${centerY + y}px`,
-                        left: `${centerX + x}px`,
-                        transform: "translate(-50%, -50%)",
-                        background: "white",
-                        color: arc.data.color,
-                        padding: "5px 10px",
-                        borderRadius: "5px",
-                        fontSize: "12px",
-                        boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
-                        pointerEvents: "none", // Ensure it's not interactive
-                      }}
+                    <g
+                      key={arc?.data?.id}
+                      className="cursor-pointer"
+                      onClick={()=>setSectionId(arc?.data?.id)}
+                      transform={`translate(${adjustedX}, ${adjustedY})`}
                     >
-                      {arc.data.content}
-                    </div>
+                      <image
+                        href={arc?.data?.imgPath} // Replace with your icon path
+                        width="40"
+                        height="40"
+                        x="-20" // Center the icon
+                        y="-45"
+                      />
+                      <text
+                        textAnchor="middle"
+                        y="16"
+                        style={{
+                          fill: "#fff",
+                          fontSize: 13,
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {arc?.data?.title}
+                      </text>
+                    </g>
                   );
                 })}
-              </foreignObject>
+              </g>
             );
           },
           ({ centerX, centerY }) => (
