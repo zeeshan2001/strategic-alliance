@@ -70,11 +70,15 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="p-8 shadow-lg rounded-md bg-[#4d4e50] text-white h-[700px] min-w-[1000px] w-full overflow-y-auto font-poppins">
         {/* Header */}
-        <DialogTitle className="text-xl font-semibold mb-2">
+        <DialogTitle className="text-2xl font-semibold mb-2">
           {(sectionId === 6 || sectionId === 7 || sectionId === 3) &&
             "Employee Handbook Details"}
 
           {sectionId === 8 && "Opportunity Details"}
+
+          {sectionId === 8 && <p className="text-lg mt-3 font-medium">
+            Filtered by Opportunity: Green Mobility Network Expansion
+            </p>}
 
           {sectionId === 5 && (
             <div className="flex flex-col w-2/3 gap-5">
@@ -225,7 +229,10 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
             </div>
           )}
           {sectionId === 8 ? (
-            <div className="h-[450px] w-1/2 text-black">
+           <div className="w-1/2 flex flex-col gap-2 items-center">
+           <h2 className="text-lg font-semibold">Opportunity Conversion Funnel </h2>
+            <div className="h-[450px] w-full text-black">
+              
               <ResponsiveFunnel
                 data={waveData}
                 margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
@@ -244,7 +251,7 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
                 currentBorderWidth={40}
                 motionConfig="wobbly"
               />
-            </div>
+            </div></div>
           ) : sectionId === 5 ? (
             <img
               className="h-auto max-h-[450px] w-1/2"
