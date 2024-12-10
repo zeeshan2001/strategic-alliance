@@ -363,9 +363,9 @@ const DescriptionCard = () => {
                 {/* Map/Graph Section */}
                 <div className="flex flex-1 bg-gray-700 rounded-lg relative">
                   {/* <h3 className="absolute top-2 left-4 font-medium">Map\Graph</h3> */}
-                  <div className="w-full h-[480px] flex items-center justify-center text-white">
+                  <div className="w-full h-[480px] flex items-center justify-center text-black">
                     {sectionId === 1 && (
-                      <div className="h-[430px] w-full">
+                      <div className="h-[430px] w-full text-black">
                         <ResponsiveHeatMap
                           data={heatMapData}
                           margin={{ top: 60, right: 90, bottom: 60, left: 90 }}

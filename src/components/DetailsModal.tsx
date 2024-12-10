@@ -54,7 +54,8 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
       <DialogContent className="p-8 shadow-lg rounded-md bg-[#4d4e50] text-white h-[700px] min-w-[1000px] w-full overflow-y-auto font-poppins">
         {/* Header */}
         <DialogTitle className="text-xl font-semibold mb-2">
-          {(sectionId === 6 || sectionId === 7 || sectionId === 3) && "Employee Handbook Details"}
+          {(sectionId === 6 || sectionId === 7 || sectionId === 3) &&
+            "Employee Handbook Details"}
 
           {sectionId === 8 && "Opportunity Details"}
 
@@ -152,50 +153,61 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
               className="rounded-xl shadow-lg border p-4 w-1/2 text-white font-extralight text-sm"
             >
               We are thrilled to have you on board and look forward to seeing
-              you thrive in our team. <br /><br /> This handbook is designed to familiarize
-              you with our company policies, culture, and guidelines to ensure a
-              smooth and rewarding experience.
+              you thrive in our team. <br />
+              <br /> This handbook is designed to familiarize you with our
+              company policies, culture, and guidelines to ensure a smooth and
+              rewarding experience.
             </p>
           )}
           {sectionId === 5 && (
             <div className="bg-teal-900 p-6 rounded-lg shadow-lg w-1/2 text-white">
-            <h2 className="text-xl font-bold mb-4">Relevant Files:</h2>
-            <table className="w-full border-collapse border border-teal-700 text-left">
-              <thead>
-                <tr className="bg-teal-800 text-teal-400">
-                  <th className="border border-teal-700 px-4 py-2">Clickable Files</th>
-                  <th className="border border-teal-700 px-4 py-2">% Match</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border border-teal-700 px-4 py-2 text-teal-200 hover:text-teal-400 cursor-pointer">
-                    Example 1
-                  </td>
-                  <td className="border border-teal-700 px-4 py-2 text-teal-200">95%</td>
-                </tr>
-                <tr>
-                  <td className="border border-teal-700 px-4 py-2 text-teal-200 hover:text-teal-400 cursor-pointer">
-                    Example 2
-                  </td>
-                  <td className="border border-teal-700 px-4 py-2 text-teal-200">80%</td>
-                </tr>
-                <tr>
-                  <td className="border border-teal-700 px-4 py-2 text-teal-200 hover:text-teal-400 cursor-pointer">
-                    Example 3
-                  </td>
-                  <td className="border border-teal-700 px-4 py-2 text-teal-200">70%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+              <h2 className="text-xl font-bold mb-4">Relevant Files:</h2>
+              <table className="w-full border-collapse border border-teal-700 text-left">
+                <thead>
+                  <tr className="bg-teal-800 text-teal-400">
+                    <th className="border border-teal-700 px-4 py-2">
+                      Clickable Files
+                    </th>
+                    <th className="border border-teal-700 px-4 py-2">
+                      % Match
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-teal-700 px-4 py-2 text-teal-200 hover:text-teal-400 cursor-pointer">
+                      Example 1
+                    </td>
+                    <td className="border border-teal-700 px-4 py-2 text-teal-200">
+                      95%
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-teal-700 px-4 py-2 text-teal-200 hover:text-teal-400 cursor-pointer">
+                      Example 2
+                    </td>
+                    <td className="border border-teal-700 px-4 py-2 text-teal-200">
+                      80%
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-teal-700 px-4 py-2 text-teal-200 hover:text-teal-400 cursor-pointer">
+                      Example 3
+                    </td>
+                    <td className="border border-teal-700 px-4 py-2 text-teal-200">
+                      70%
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           )}
           {sectionId === 8 ? (
-            <div className="h-[450px] w-1/2">
+            <div className="h-[450px] w-1/2 text-black">
               <ResponsiveFunnel
                 data={waveData}
                 margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-                valueFormat=">-.4s"
+                valueFormat=" >-.4r"
                 colors={{ scheme: "spectral" }}
                 borderWidth={20}
                 labelColor={{
@@ -211,17 +223,18 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
                 motionConfig="wobbly"
               />
             </div>
-          ) : (
-            sectionId === 5 ? 
+          ) : sectionId === 5 ? (
             <img
               className="h-auto max-h-[450px] w-1/2"
               src="/images/studies.png"
               alt=""
-            /> :  <img
-            className="h-auto max-h-[450px] w-1/2"
-            src="/images/handbookImage.png"
-            alt=""
-          />
+            />
+          ) : (
+            <img
+              className="h-auto max-h-[450px] w-1/2"
+              src="/images/handbookImage.png"
+              alt=""
+            />
           )}
         </div>
 
