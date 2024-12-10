@@ -2,6 +2,7 @@ import { ResponsivePie } from "@nivo/pie";
 import { categoriesData } from "../utils/commonData";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../AppContext";
+import { Element, Link, scroller } from "react-scroll";
 
 const Chart = () => {
   const { setSectionId } = useContext(AppContext);
@@ -97,7 +98,9 @@ const Chart = () => {
                       <g
                         key={arc?.data?.id}
                         className="cursor-pointer"
-                        onClick={() => setSectionId(arc?.data?.id)}
+                        onClick={() => {
+                          setSectionId(arc?.data?.id);
+                        }}
                         transform={`translate(${adjustedX}, ${adjustedY})`}
                       >
                         <image

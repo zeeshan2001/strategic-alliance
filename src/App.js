@@ -8,6 +8,7 @@ import CookieModal from "./components/CookieModal";
 import PromptSection from "./components/PromptSection";
 import DescriptionCard from "./components/DescriptionCard";
 import { AppProvider } from "./AppContext";
+import { Element } from "react-scroll";
 
 function App() {
   return (
@@ -61,8 +62,8 @@ function App() {
             })}
           </div>
         </div>
-
         <DescriptionCard />
+
         <Footer />
         <CookieModal />
       </div>

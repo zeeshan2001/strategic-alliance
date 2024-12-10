@@ -7,16 +7,25 @@ import { ResponsiveHeatMap } from "@nivo/heatmap";
 
 import { categoriesData } from "../utils/commonData";
 import GeoChart from "./Charts/GeoMap";
+import { Element, scroller } from "react-scroll";
 const DescriptionCard = () => {
   const { sectionId } = useContext(AppContext);
   const [activeTabId, setActiveTabId] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
-    console.log("clikefd");
-
     setIsModalOpen(true);
   };
+
+  useEffect(() => {
+    if (sectionId > 0) {
+      scroller.scrollTo("descriptionSection", {
+        duration: 500,
+        delay: 0,
+        smooth: "easeInOutQuart",
+      });
+    }
+  }, [sectionId]);
   const closeModal = () => setIsModalOpen(false);
   const sectionCardsData = {
     documentation: [
@@ -146,7 +155,7 @@ const DescriptionCard = () => {
   };
   if (sectionId > 0 && sectionId !== 2) {
     return (
-      <div className="bg-[#343537] w-full p-14">
+      <Element name="descriptionSection" className="bg-[#343537] w-full p-14">
         <h2 className="p-4 font-bold text-4xl text-white text-center mb-10">
           {categoriesData?.[sectionId - 1]?.title}
         </h2>
@@ -356,85 +365,87 @@ const DescriptionCard = () => {
                   {/* <h3 className="absolute top-2 left-4 font-medium">Map\Graph</h3> */}
                   <div className="w-full h-[480px] flex items-center justify-center text-white">
                     {sectionId === 1 && (
-                      <ResponsiveHeatMap
-                        data={heatMapData}
-                        margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
-                        valueFormat=">-.2s"
-                        theme={{
-                          axis: {
-                            ticks: {
-                              text: {
-                                fill: "#fff", // White axis tick text
-                                fontSize: 12, // Adjust font size if needed
+                      <div className="h-[430px] w-full">
+                        <ResponsiveHeatMap
+                          data={heatMapData}
+                          margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
+                          valueFormat=">-.2s"
+                          theme={{
+                            axis: {
+                              ticks: {
+                                text: {
+                                  fill: "#fff", // White axis tick text
+                                  fontSize: 12, // Adjust font size if needed
+                                },
+                              },
+                              legend: {
+                                text: {
+                                  fill: "#fff", // White axis legend text
+                                },
                               },
                             },
-                            legend: {
+                            legends: {
                               text: {
-                                fill: "#fff", // White axis legend text
+                                fill: "#fff", // White legend text
                               },
                             },
-                          },
-                          legends: {
-                            text: {
-                              fill: "#fff", // White legend text
+                          }}
+                          axisTop={{
+                            tickSize: 5,
+                            tickPadding: 5,
+                            tickRotation: -90,
+                            legend: "",
+                            legendOffset: 46,
+                            truncateTickAt: 0,
+                          }}
+                          axisRight={{
+                            tickSize: 5,
+                            tickPadding: 5,
+                            tickRotation: 0,
+                            legend: "country",
+                            legendPosition: "middle",
+                            legendOffset: 70,
+                            truncateTickAt: 0,
+                          }}
+                          axisLeft={{
+                            tickSize: 5,
+                            tickPadding: 5,
+                            tickRotation: 0,
+                            legend: "country",
+                            legendPosition: "middle",
+                            legendOffset: -72,
+                            truncateTickAt: 0,
+                          }}
+                          colors={{
+                            type: "diverging",
+                            scheme: "red_yellow_blue",
+                            divergeAt: 0.5,
+                            minValue: -100000,
+                            maxValue: 100000,
+                          }}
+                          emptyColor="#555555"
+                          legends={[
+                            {
+                              anchor: "bottom",
+                              translateX: 0,
+                              fill: "#fff",
+                              translateY: 30,
+                              length: 400,
+                              thickness: 8,
+                              direction: "row",
+                              tickPosition: "after",
+                              tickSize: 3,
+                              tickSpacing: 4,
+                              tickOverlap: false,
+                              tickFormat: ">-.2s",
+                              title: "Value →",
+                              titleAlign: "start",
+                              titleOffset: 4,
                             },
-                          },
-                        }}
-                        axisTop={{
-                          tickSize: 5,
-                          tickPadding: 5,
-                          tickRotation: -90,
-                          legend: "",
-                          legendOffset: 46,
-                          truncateTickAt: 0,
-                        }}
-                        axisRight={{
-                          tickSize: 5,
-                          tickPadding: 5,
-                          tickRotation: 0,
-                          legend: "country",
-                          legendPosition: "middle",
-                          legendOffset: 70,
-                          truncateTickAt: 0,
-                        }}
-                        axisLeft={{
-                          tickSize: 5,
-                          tickPadding: 5,
-                          tickRotation: 0,
-                          legend: "country",
-                          legendPosition: "middle",
-                          legendOffset: -72,
-                          truncateTickAt: 0,
-                        }}
-                        colors={{
-                          type: "diverging",
-                          scheme: "red_yellow_blue",
-                          divergeAt: 0.5,
-                          minValue: -100000,
-                          maxValue: 100000,
-                        }}
-                        emptyColor="#555555"
-                        legends={[
-                          {
-                            anchor: "bottom",
-                            translateX: 0,
-                            fill: "#fff",
-                            translateY: 30,
-                            length: 400,
-                            thickness: 8,
-                            direction: "row",
-                            tickPosition: "after",
-                            tickSize: 3,
-                            tickSpacing: 4,
-                            tickOverlap: false,
-                            tickFormat: ">-.2s",
-                            title: "Value →",
-                            titleAlign: "start",
-                            titleOffset: 4,
-                          },
-                        ]}
-                        // tooltip={(cell) => `${cell?.id}`}
-                      />
+                          ]}
+                          // tooltip={(cell) => `${cell?.id}`}
+                        />
+                      </div>
                     )}
                     {sectionId === 4 && <GeoChart />}
                   </div>
@@ -479,7 +490,7 @@ const DescriptionCard = () => {
             </div>
           </div>
         )}
-      </div>
+      </Element>
     );
   } else if (sectionId === 2) {
     return (
