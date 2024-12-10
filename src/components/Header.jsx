@@ -18,13 +18,13 @@ const Header = () => {
         <div className="flex-shrink">
           <h1 className="text-2xl font-bold">
             <img
-              style={{ width: "300px" }}
+              style={{ width: "215px" }}
               src="/images/investoLogo.svg"
               alt="Investo Logo"
             />
           </h1>
         </div>
-        <div className="flex flex-col justify-end w-full self-start gap-y-[4rem]">
+        <div className="flex flex-col justify-end w-full self-start gap-y-[2rem] mt-[30px]">
           <div className="flex justify-end gap-10">
             <h3>
               <a href="#">MISA</a>

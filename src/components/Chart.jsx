@@ -12,6 +12,9 @@ const Chart = () => {
 
   return (
     <div style={{ height: 700 }} className="font-poppins">
+      <h2 className="font-bold text-4xl text-white text-center my-10">
+        MISA Data Dynamo
+      </h2>
       <ResponsivePie
         data={categoriesData}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -117,7 +120,7 @@ const Chart = () => {
                     <g
                       key={arc?.data?.id}
                       className="cursor-pointer"
-                      onClick={()=>setSectionId(arc?.data?.id)}
+                      onClick={() => setSectionId(arc?.data?.id)}
                       transform={`translate(${adjustedX}, ${adjustedY})`}
                     >
                       <image
