@@ -2,7 +2,15 @@ import { ResponsivePie } from "@nivo/pie";
 import { categoriesData } from "../utils/commonData";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../AppContext";
-import { Element, Link, scroller } from "react-scroll";
+import {
+  Link,
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 
 const Chart = () => {
   const { setSectionId } = useContext(AppContext);
@@ -37,6 +45,14 @@ const Chart = () => {
 
   const handleClick = (data) => {
     setSectionId(data?.data?.id);
+   setTimeout(()=>{
+    scroller.scrollTo("descriptionSection", {
+      // Scroll to the section
+      // duration: 0,
+      // delay: 0,
+      // smooth: "easeInOutQuart", // Smooth scroll effect
+    });
+   },1000)
   };
 
   return (

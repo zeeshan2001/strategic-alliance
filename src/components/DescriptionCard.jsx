@@ -7,7 +7,6 @@ import { ResponsiveHeatMap } from "@nivo/heatmap";
 
 import { categoriesData } from "../utils/commonData";
 import GeoChart from "./Charts/GeoMap";
-import { Element, scroller } from "react-scroll";
 const DescriptionCard = () => {
   const { sectionId } = useContext(AppContext);
   const [activeTabId, setActiveTabId] = useState(1);
@@ -17,15 +16,15 @@ const DescriptionCard = () => {
     setIsModalOpen(true);
   };
 
-  useEffect(() => {
-    if (sectionId > 0) {
-      scroller.scrollTo("descriptionSection", {
-        duration: 500,
-        delay: 0,
-        smooth: "easeInOutQuart",
-      });
-    }
-  }, [sectionId]);
+  // useEffect(() => {
+  //   if (sectionId > 0) {
+  //     scroller.scrollTo("descriptionSection", {
+  //       duration: 500,
+  //       delay: 0,
+  //       smooth: "easeInOutQuart",
+  //     });
+  //   }
+  // }, [sectionId]);
   const closeModal = () => setIsModalOpen(false);
   const sectionCardsData = {
     documentation: [
@@ -155,7 +154,7 @@ const DescriptionCard = () => {
   };
   if (sectionId > 0 && sectionId !== 2) {
     return (
-      <Element name="descriptionSection" className="bg-[#343537] w-full p-14">
+      <div className="bg-[#343537] w-full p-14">
         <h2 className="p-4 font-bold text-4xl text-white text-center mb-10">
           {categoriesData?.[sectionId - 1]?.title}
         </h2>
@@ -181,7 +180,7 @@ const DescriptionCard = () => {
                       {item.description}
                     </p>
                     <p className="text-white mb-2 text-sm">
-                      Total Number: &nbsp;
+                      Number of Documents: &nbsp;
                       <span className="font-thin text-base">
                         {item.totalNumber}
                       </span>
@@ -213,7 +212,7 @@ const DescriptionCard = () => {
                       {item.description}
                     </p>
                     <p className="text-white mb-2 text-sm">
-                      Total Number: &nbsp;
+                      Number of Documents: &nbsp;
                       <span className="font-thin text-base">
                         {item.totalNumber}
                       </span>
@@ -246,7 +245,7 @@ const DescriptionCard = () => {
                       {item.description}
                     </p>
                     <p className="text-white mb-2 text-sm">
-                      Total Number: &nbsp;
+                      Number of Documents: &nbsp;
                       <span className="font-thin text-base">
                         {item.totalNumber}
                       </span>
@@ -271,7 +270,7 @@ const DescriptionCard = () => {
             />
           </div>
         ) : (
-          <div className="flex flex-col text-white w-full mx-auto">
+          <div className="flex flex-col text-white w-full">
             {/* Header */}
 
             {sectionId === 4 && (
@@ -324,14 +323,13 @@ const DescriptionCard = () => {
               </div>
             )}
 
-            <div className="flex flex-1 p-6 gap-6">
+            <div className="flex w-full p-6 gap-6">
               {/* About Sector */}
               <div
                 style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
                 className="flex flex-col w-2/6 rounded-lg shadow-lg p-4 space-y-2 border"
               >
-                <h2 className="font-semibold"></h2>
-                <p className="text-gray-300">
+                <p className="text-gray-100 text-base font-sans text-left leading-loose">
                   {sectionId === 1
                     ? sectionCardsData?.sector_analysis?.about
                     : sectionCardsData?.profiles?.about}
@@ -345,18 +343,20 @@ const DescriptionCard = () => {
               >
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div className="bg-[#123235] p-4 rounded-lg">
-                    <h3 className="font-medium text-center">Total Services</h3>
-                    <h3 className="font-semibold text-center">71</h3>
+                    <h3 className="font-medium text-center"># of Licenses</h3>
+                    <h3 className="font-semibold text-center">124</h3>
                   </div>
                   <div className="bg-[#123235] p-4 rounded-lg">
-                    <h3 className="font-medium text-center">Total Goods</h3>
-                    <h3 className="font-semibold text-center">35</h3>
+                    <h3 className="font-medium text-center">
+                      # of Active Licenses
+                    </h3>
+                    <h3 className="font-semibold text-center">111</h3>
                   </div>
                   <div className="bg-[#123235] p-4 rounded-lg">
                     <h3 className="font-medium text-center">
                       Total Investment
                     </h3>
-                    <h3 className="font-semibold text-center">130 M</h3>
+                    <h3 className="font-semibold text-center">130M</h3>
                   </div>
                 </div>
 
@@ -472,25 +472,56 @@ const DescriptionCard = () => {
               {/* Metadata */}
               <div
                 style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                className="w-1/8 shadow-lg rounded-lg p-4 space-y-4"
+                className="w-[340px] shadow-lg rounded-lg p-4 space-y-4 flex justify-between flex-col"
               >
+               {sectionId === 4 && <div className="w-full">
+                  <h2 class="text-xl font-bold text-center text-gray-100 mb-3">
+                    Transportation Insights
+                  </h2>
+
+                  <ul class="list-disc list-inside space-y-2 text-gray-200">
+                    <li class="text-base">
+                      Countries like <b>Japan</b> and <b>Norway</b> favor
+                      eco-friendly transportation modes (Trains, Mopeds).
+                    </li>
+
+                    <li class="text-base">
+                      The <b>US</b> shows strong reliance on Subway systems but
+                      struggles with Cars and Boats.
+                    </li>
+
+                    <li class="text-base">
+                      European countries like <b>France</b> and <b>Germany</b>{" "}
+                      showcase diverse results, often highlighting
+                      inefficiencies in Boat and Moto use.
+                    </li>
+
+                    <li class="text-base">
+                      <b>Iceland</b> and <b>Vietnam</b> emphasize sustainable
+                      options such as Bicycles.
+                    </li>
+                  </ul>
+                </div>}
+
                 <div>
-                  <h3 className="font-medium">Last Update:</h3>
-                  <p className="text-gray-300">December 7, 2024</p>
-                </div>
-                <div>
-                  <h3 className="font-medium">Owner:</h3>
-                  <p className="text-gray-300">MISA</p>
-                </div>
-                <div>
-                  <h3 className="font-medium">Contact Owner:</h3>
-                  <p className="text-gray-300">Test@test.com</p>
+                  <div className="flex text-sm gap-2 mb-1">
+                    <h3 className="font-medium">Last Update:</h3>
+                    <p className="text-gray-300">December 7, 2024</p>
+                  </div>
+                  <div className="flex text-sm gap-2 mb-1">
+                    <h3 className="font-medium">Owner:</h3>
+                    <p className="text-gray-300">MISA</p>
+                  </div>
+                  <div className="flex text-sm gap-2 mb-1">
+                    <h3 className="font-medium">Contact Owner:</h3>
+                    <p className="text-gray-300">Test@test.com</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         )}
-      </Element>
+      </div>
     );
   } else if (sectionId === 2) {
     return (

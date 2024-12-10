@@ -62,8 +62,9 @@ function App() {
             })}
           </div>
         </div>
-        <DescriptionCard />
-
+        <Element name="descriptionSection">
+          <DescriptionCard />
+        </Element>
         <Footer />
         <CookieModal />
       </div>
