@@ -10,6 +10,7 @@ module.exports = {
       },
       spacing: {
         "4rem": "4rem",
+        "17px": "17px", // Add custom value for spacing
       },
       // keyframes: {
       //   rotatePie: {

@@ -158,6 +158,7 @@ const DescriptionCard = () => {
     profiles: {
       about: (
         <div className="text-white text-left p-4 font-sans">
+          <h2 className="font-bold text-lg mb-3">Sector Brief</h2>
           <p className="mb-2 leading-relaxed">
             Brazil, with a GDP of $2.2 trillion in 2024 and a population of 216
             million, stands as a vital economic powerhouse in Latin America.
@@ -190,8 +191,41 @@ const DescriptionCard = () => {
       total_investment: "130M",
     },
     sector_analysis: {
-      about:
-        "The global transportation sector is essential for international trade and economic activity, facilitating the movement of goods and people. It accounts for about $10 trillion in annual economic activity, with road transport dominating both freight and passenger mobility at over 70% of global logistics. Railways, though smaller at 1.3 million kilometers, are vital for bulk goods in major countries like the U.S., China, and Russia. Aviation connects over 22,000 city pairs and generates $850 billion, while maritime transport handles 80% of global trade, shipping 11 billion tons through over 5,000 ports. Investment in the sector is increasingly focused on sustainable solutions, including green logistics and high-speed rail, aimed at reducing carbon emissions. Technologies like IoT, blockchain, and AI for route optimization are enhancing efficiency. Urban areas are benefiting from micro-mobility services, while rural regions see improvements in connectivity. The sector’s alignment with global goals, such as the UN Sustainable Development Goals, emphasizes resilience and sustainability, shaping the future of economies.",
+      about: (
+        <div className="text-white text-left p-4 font-sans">
+          <h2 className="font-bold text-lg mb-3">Sector Brief</h2>
+          <p className="mb-2 leading-relaxed">
+            The global transportation sector is essential for international
+            trade and economic activity, facilitating the movement of goods and
+            people.
+          </p>
+          <p className="mb-2 leading-relaxed">
+            It accounts for about $10 trillion in annual economic activity, with
+            road transport dominating both freight and passenger mobility at
+            over 70% of global logistics.
+          </p>
+          <p className="mb-2 leading-relaxed">
+            Railways, though smaller at 1.3 million kilometers, are vital for
+            bulk goods in major countries like the U.S., China, and Russia.
+            Aviation connects over 22,000 city pairs and generates $850 billion,
+            while maritime transport handles 80% of global trade, shipping 11
+            billion tons through over 5,000 ports.
+          </p>
+          <p className="mb-2 leading-relaxed">
+            Investment in the sector is increasingly focused on sustainable
+            solutions, including green logistics and high-speed rail, aimed at
+            reducing carbon emissions. Technologies like IoT, blockchain, and AI
+            for route optimization are enhancing efficiency.
+          </p>
+          <p className="mb-2 leading-relaxed">
+            Urban areas are benefiting from micro-mobility services, while rural
+            regions see improvements in connectivity. The sector’s alignment
+            with global goals, such as the UN Sustainable Development Goals,
+            emphasizes resilience and sustainability, shaping the future of
+            economies.
+          </p>
+        </div>
+      ),
       total_services: "124",
       total_goods: "111",
       total_investment: "130M",
@@ -531,60 +565,59 @@ const DescriptionCard = () => {
               </div>
 
               {/* Metadata */}
-              <div
-                style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                className="w-[340px] shadow-lg rounded-lg p-4 space-y-4 flex justify-between flex-col"
-              >
-                {sectionId === 4 && (
-                  <div className="w-full">
-                    <h2 class="text-xl font-bold text-center text-gray-100 mb-3">
-                      Transportation Insights
-                    </h2>
+              {sectionId !== 4 && (
+                <div className="w-[340px] shadow-lg rounded-lg p-4 space-y-4 border flex justify-between flex-col bg-[#0000001a]">
+                  {sectionId === 1 && (
+                    <div className="w-full">
+                      <h2 class="text-xl font-bold text-left text-gray-100 mb-3">
+                        Transportation Insights
+                      </h2>
 
-                    <ul class="list-disc list-inside space-y-2 text-gray-200">
-                      <li class="text-base">
-                        Countries like <b>Japan</b> and <b>Norway</b> favor
-                        eco-friendly transportation modes (Trains, Mopeds).
-                      </li>
+                      <ul class="list-disc list-inside space-y-2 text-gray-200">
+                        <li class="text-base">
+                          Countries like <b>Japan</b> and <b>Norway</b> favor
+                          eco-friendly transportation modes (Trains, Mopeds).
+                        </li>
 
-                      <li class="text-base">
-                        The <b>US</b> shows strong reliance on Subway systems
-                        but struggles with Cars and Boats.
-                      </li>
-                      <li class="text-base">
-                        The <b>US</b> shows strong reliance on Subway systems
-                        but struggles with Cars and Boats.
-                      </li>
+                        <li class="text-base">
+                          The <b>US</b> shows strong reliance on Subway systems
+                          but struggles with Cars and Boats.
+                        </li>
+                        <li class="text-base">
+                          The <b>US</b> shows strong reliance on Subway systems
+                          but struggles with Cars and Boats.
+                        </li>
 
-                      <li class="text-base">
-                        European countries like <b>France</b> and <b>Germany</b>{" "}
-                        showcase diverse results, often highlighting
-                        inefficiencies in Boat and Moto use.
-                      </li>
+                        <li class="text-base">
+                          European countries like <b>France</b> and{" "}
+                          <b>Germany</b> showcase diverse results, often
+                          highlighting inefficiencies in Boat and Moto use.
+                        </li>
 
-                      <li class="text-base">
-                        <b>Iceland</b> and <b>Vietnam</b> emphasize sustainable
-                        options such as Bicycles.
-                      </li>
-                    </ul>
-                  </div>
-                )}
+                        <li class="text-base">
+                          <b>Iceland</b> and <b>Vietnam</b> emphasize
+                          sustainable options such as Bicycles.
+                        </li>
+                      </ul>
+                    </div>
+                  )}
 
-                <div>
-                  <div className="flex text-sm gap-2 mb-1">
-                    <h3 className="font-medium">Last Update:</h3>
-                    <p className="text-gray-300">December 7, 2024</p>
-                  </div>
-                  <div className="flex text-sm gap-2 mb-1">
-                    <h3 className="font-medium">Owner:</h3>
-                    <p className="text-gray-300">MISA</p>
-                  </div>
-                  <div className="flex text-sm gap-2 mb-1">
-                    <h3 className="font-medium">Contact Owner:</h3>
-                    <p className="text-gray-300">Test@test.com</p>
+                  <div>
+                    <div className="flex text-sm gap-2 mb-1">
+                      <h3 className="font-medium">Last Update:</h3>
+                      <p className="text-gray-300">December 7, 2024</p>
+                    </div>
+                    <div className="flex text-sm gap-2 mb-1">
+                      <h3 className="font-medium">Owner:</h3>
+                      <p className="text-gray-300">MISA</p>
+                    </div>
+                    <div className="flex text-sm gap-2 mb-1">
+                      <h3 className="font-medium">Contact Owner:</h3>
+                      <p className="text-gray-300">Test@test.com</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         )}

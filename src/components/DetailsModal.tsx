@@ -42,21 +42,66 @@ const waveData = [
   },
 ];
 const tableData = [
-  { category: "Academic Research", name: "Global Trends in Foreign Direct Investment (FDI)" },
-  { category: "Academic Research", name: "Policies Driving Investment Flows into Emerging Markets" },
-  { category: "Academic Research", name: "The Role of Government Incentives in Attracting FDI" },
-  { category: "Industry Reports", name: "Investment Opportunities in the Saudi Arabian Energy Sector" },
-  { category: "Industry Reports", name: "Feasibility of Investments in the Technology Sector" },
-  { category: "Industry Reports", name: "Growth Prospects for Saudi Arabia's Tourism and Hospitality Industry" },
-  { category: "Industry Reports", name: "Real Estate Investment Potential in Saudi Arabia" },
-  { category: "Market Studies", name: "Market Dynamics and Investment Climate in the Middle East" },
-  { category: "Market Studies", name: "Sector Performance in Saudi Arabia's Manufacturing Industry" },
-  { category: "Market Studies", name: "Investment Opportunities in Saudi Arabia’s ICT Sector" },
-  { category: "Market Studies", name: "Regional Investment Outlook: GCC Countries" },
-  { category: "Case Studies", name: "Case Study: Successful Foreign Investment in Saudi Arabia's Vision 2030 Projects" },
-  { category: "Case Studies", name: "Lessons from the Economic Diversification Efforts in the UAE" },
-  { category: "Case Studies", name: "Case Study: Investment Growth in Saudi Arabia’s Renewable Energy Sector" },
-  { category: "Case Studies", name: "Failed Investment Project in Saudi Arabia: Key Takeaways" },
+  {
+    category: "Academic Research",
+    name: "Global Trends in Foreign Direct Investment (FDI)",
+  },
+  {
+    category: "Academic Research",
+    name: "Policies Driving Investment Flows into Emerging Markets",
+  },
+  {
+    category: "Academic Research",
+    name: "The Role of Government Incentives in Attracting FDI",
+  },
+  {
+    category: "Industry Reports",
+    name: "Investment Opportunities in the Saudi Arabian Energy Sector",
+  },
+  {
+    category: "Industry Reports",
+    name: "Feasibility of Investments in the Technology Sector",
+  },
+  {
+    category: "Industry Reports",
+    name: "Growth Prospects for Saudi Arabia's Tourism and Hospitality Industry",
+  },
+  {
+    category: "Industry Reports",
+    name: "Real Estate Investment Potential in Saudi Arabia",
+  },
+  {
+    category: "Market Studies",
+    name: "Market Dynamics and Investment Climate in the Middle East",
+  },
+  {
+    category: "Market Studies",
+    name: "Sector Performance in Saudi Arabia's Manufacturing Industry",
+  },
+  {
+    category: "Market Studies",
+    name: "Investment Opportunities in Saudi Arabia’s ICT Sector",
+  },
+  {
+    category: "Market Studies",
+    name: "Regional Investment Outlook: GCC Countries",
+  },
+  {
+    category: "Case Studies",
+    name: "Case Study: Successful Foreign Investment in Saudi Arabia's Vision 2030 Projects",
+  },
+  {
+    category: "Case Studies",
+    name: "Lessons from the Economic Diversification Efforts in the UAE",
+  },
+  {
+    category: "Case Studies",
+    name: "Case Study: Investment Growth in Saudi Arabia’s Renewable Energy Sector",
+  },
+  {
+    category: "Case Studies",
+    name: "Failed Investment Project in Saudi Arabia: Key Takeaways",
+  },
 ];
 
 const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
@@ -76,9 +121,11 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
 
           {sectionId === 8 && "Opportunity Details"}
 
-          {sectionId === 8 && <p className="text-lg mt-3 font-medium">
-            Filtered by Opportunity: Green Mobility Network Expansion
-            </p>}
+          {sectionId === 8 && (
+            <p className="text-lg mt-3 font-medium">
+              Filtered by Opportunity: Green Mobility Network Expansion
+            </p>
+          )}
 
           {sectionId === 5 && (
             <div className="flex flex-col w-2/3 gap-5">
@@ -90,8 +137,9 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
                 autoFocus={false}
                 style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
                 placeholder="Search here"
-                className={`px-4 py-2 border-2 text-base font-extralight outline-none transition-all placeholder:text-gray-200 text-white duration-300 ease-in-out ${isFocused ? "border-green-500" : "border-gray-300"
-                  }`}
+                className={`px-4 py-2 border-2 text-base font-extralight outline-none transition-all placeholder:text-gray-200 text-white duration-300 ease-in-out ${
+                  isFocused ? "border-green-500" : "border-gray-300"
+                }`}
                 onFocus={() => setIsFocused(true)}
               />
             </div>
@@ -99,7 +147,7 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
         </DialogTitle>
         <div className="flex flex-row gap-5 justify-between w-full h-full">
           {sectionId === 8 && (
-            <div className="bg-gray-900 p-6 rounded-lg text-xs shadow-lg w-1/2 text-white">
+            <div className="bg-[#0000001a] border p-6 rounded-lg text-xs shadow-lg w-1/2 text-white">
               <div className="mb-2">
                 <h2 className="text-sm font-semibold">Project Name:</h2>
                 <p className="text-gray-300 ml-4">
@@ -170,7 +218,7 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
           {(sectionId === 6 || sectionId === 7 || sectionId === 3) && (
             <div
               style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-              className="rounded-xl shadow-lg border p-4 w-1/2 text-white font-extralight text-sm"
+              className="shadow-lg border px-4 pt-4 w-1/2 text-white font-extralight text-sm"
             >
               <div className="mb-2">
                 We are thrilled to have you on board and look forward to seeing
@@ -200,14 +248,14 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
           )}
           {sectionId === 5 && (
             <div className="bg-teal-900 p-6 rounded-lg shadow-lg w-1/2 text-white">
-              <h2 className="text-xl font-bold mb-4">Relevant Files:</h2>
+              <h2 className="text-lg font-bold mb-4">Relevant Files:</h2>
               <table className="w-full border-collapse border border-teal-700 text-left">
                 <thead>
                   <tr className="bg-teal-800 text-teal-100">
-                    <th className="border border-teal-700 px-4 py-2">
+                    <th className="border border-teal-700 px-4 py-2 text-sm font-normal">
                       Category
                     </th>
-                    <th className="border border-teal-700 px-4 py-2">
+                    <th className="border border-teal-700 px-4 py-2 text-sm font-normal">
                       Name
                     </th>
                   </tr>
@@ -215,52 +263,53 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
                 <tbody>
                   {tableData.map((item, index) => (
                     <tr key={index}>
-                      <td className="border border-teal-700 px-4 py-2 text-teal-100 hover:text-teal-300 cursor-pointer">
+                      <td className="border border-teal-700 px-4 py-2 text-teal-100 hover:text-teal-300 cursor-pointer text-[12px]">
                         {item.category}
                       </td>
-                      <td className="border border-teal-700 px-4 py-2 text-teal-100">
+                      <td className="border border-teal-700 px-4 py-2 text-teal-100 text-[12px]">
                         {item.name}
                       </td>
                     </tr>
                   ))}
                 </tbody>
-
               </table>
             </div>
           )}
           {sectionId === 8 ? (
-           <div className="w-1/2 flex flex-col gap-2 items-center">
-           <h2 className="text-lg font-semibold">Opportunity Conversion Funnel </h2>
-            <div className="h-[450px] w-full text-black">
-              
-              <ResponsiveFunnel
-                data={waveData}
-                margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-                valueFormat=" >-.4r"
-                colors={{ scheme: "spectral" }}
-                borderWidth={20}
-                labelColor={{
-                  from: "color",
-                  modifiers: [["darker", 3]],
-                }}
-                beforeSeparatorLength={100}
-                beforeSeparatorOffset={20}
-                afterSeparatorLength={100}
-                afterSeparatorOffset={20}
-                currentPartSizeExtension={10}
-                currentBorderWidth={40}
-                motionConfig="wobbly"
-              />
-            </div></div>
+            <div className="w-1/2 flex flex-col gap-2 items-center">
+              <h2 className="text-lg font-semibold">
+                Opportunity Conversion Funnel{" "}
+              </h2>
+              <div className="h-[450px] w-full text-black">
+                <ResponsiveFunnel
+                  data={waveData}
+                  margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+                  valueFormat=" >-.4r"
+                  colors={{ scheme: "spectral" }}
+                  borderWidth={20}
+                  labelColor={{
+                    from: "color",
+                    modifiers: [["darker", 3]],
+                  }}
+                  beforeSeparatorLength={100}
+                  beforeSeparatorOffset={20}
+                  afterSeparatorLength={100}
+                  afterSeparatorOffset={20}
+                  currentPartSizeExtension={10}
+                  currentBorderWidth={40}
+                  motionConfig="wobbly"
+                />
+              </div>
+            </div>
           ) : sectionId === 5 ? (
             <img
-              className="h-auto max-h-[450px] w-1/2"
+              className="h-auto max-h-[500px] w-1/2"
               src="/images/studies.png"
               alt=""
             />
           ) : (
             <img
-              className="h-auto max-h-[450px] w-1/2"
+              className="h-auto max-h-[485px] w-1/2"
               src="/images/handbookImage.png"
               alt=""
             />
@@ -276,7 +325,11 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
           </div>
           <div className="flex flex-col">
             <div className="font-medium mb-2">Owner:</div>
-            <div>Global Transportation Development Team</div>
+            {sectionId === 7 ? (
+              <div>Services Team</div>
+            ) : (
+              <div>Global Transportation Development Team</div>
+            )}
             {/* {(sectionId === 6 || sectionId === 7 || sectionId === 3) && <div>--------</div>}
             {sectionId === 8 && "Global Transportation Development Team"}{" "} */}
           </div>

@@ -91,5 +91,5 @@ html {
 }
 
 .rotating-container {
-  animation: rotate 2s ease-in-out forwards; /* 2 seconds, ease-in-out for smooth start/end */
+  animation: rotate 10s ease-in-out forwards; /* 2 seconds, ease-in-out for smooth start/end */
 }

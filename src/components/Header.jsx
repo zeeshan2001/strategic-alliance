@@ -24,7 +24,7 @@ const Header = () => {
             />
           </h1>
         </div>
-        <div className="flex flex-col justify-end w-full self-start gap-y-[2rem] mt-[30px]">
+        <div className="flex flex-col justify-end w-full self-start gap-y-[17px] mt-[30px]">
           <div className="flex justify-end gap-10">
             <h3>
               <a href="#">MISA</a>

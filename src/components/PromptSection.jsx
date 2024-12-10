@@ -181,29 +181,27 @@ const PromptSection = () => {
           </p>
           <p className="cursor-pointer underline hover:no-underline">History</p>
           <p className="cursor-pointer underline hover:no-underline">
-            Data provenance
+            Data Provenance
           </p>
         </div>
-        <div className="p-5 bg-[#ffffff1a]">
-          <h2 className="mb-5 font-bold text-[18px]">Chat History</h2>
-          <h3 className="mb-3 font-bold text-[16px]">FDI and Investments</h3>
+        <div className="p-5 bg-[#ffffff1a] text-[12px]">
+          <h2 className="mb-5 text-[14px]">Chat History</h2>
+          <h3 className="mb-3">FDI and Investments</h3>
           <ul className="space-y-1 list-disc px-4">
             <li>Focus: infrastructure, tech, healthcare, energy.</li>
-            <li>•FDI process and incentives.</li>
-            <li>•Target: GCC, Europe Investors.</li>
-            <li>•Key investment opportunities.</li>
-            <li>•Investor tracking and engagement.</li>
+            <li>FDI process and incentives.</li>
+            <li>Target: GCC, Europe Investors.</li>
+            <li>Key investment opportunities.</li>
+            <li>Investor tracking and engagement.</li>
           </ul>
-          <h3 className="mb-3 mt-5 font-bold text-[16px]">Opportunities</h3>
+          <h3 className="mb-3 mt-5">Opportunities</h3>
           <ul className="space-y-1 list-disc px-4">
             <li>Prioritize growth sectors (renewable energy, ICT).</li>
             <li>Foster international-local business collaboration.</li>
             <li>Compliance: regulatory requirements.</li>
             <li>License renewals and updates.</li>
           </ul>
-          <h3 className="mb-3 mt-5 font-bold text-[16px]">
-            Licensing Related Procedures
-          </h3>
+          <h3 className="mb-3 mt-5">Licensing Related Procedures</h3>
           <ul className="space-y-1 list-disc px-4">
             <li>Compliance: regulatory requirements.</li>
             <li>License renewals and updates.</li>
@@ -218,7 +216,7 @@ const PromptSection = () => {
           <input
             type="text"
             style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-            placeholder="Enter Your Prompt"
+            placeholder="Please as me a question..."
             className={`px-4 py-2 border-2 text-lg outline-none transition-all placeholder:text-gray-200 text-white duration-300 ease-in-out ${
               isFocused ? "border-green-500" : "border-gray-300"
             }`}
