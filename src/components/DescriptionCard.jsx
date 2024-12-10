@@ -1,13 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../AppContext";
 import MyHeatMap from "./Charts/HeatMap";
 import DetailsModal from "./DetailsModal";
 import { heatMapData } from "../utils/heatMapData";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
-import { geoMapData } from "../utils/geoMapData";
-import { ResponsiveChoropleth } from "@nivo/geo";
-import { categoriesData } from "../utils/commonData";
 
+import { categoriesData } from "../utils/commonData";
+import GeoChart from "./Charts/GeoMap";
 const DescriptionCard = () => {
   const { sectionId } = useContext(AppContext);
   const [activeTabId, setActiveTabId] = useState(1);
@@ -353,15 +352,34 @@ const DescriptionCard = () => {
                 </div>
 
                 {/* Map/Graph Section */}
-                <div className="flex flex-1 bg-gray-800 rounded-lg relative">
+                <div className="flex flex-1 bg-gray-700 rounded-lg relative">
                   {/* <h3 className="absolute top-2 left-4 font-medium">Map\Graph</h3> */}
-                  <div className="w-full h-[600px] flex items-center justify-center">
-                    {/* <MyHeatMap /> */}
-                    {(sectionId === 1 || sectionId === 4) && (
+                  <div className="w-full h-[480px] flex items-center justify-center text-white">
+                    {sectionId === 1 && (
                       <ResponsiveHeatMap
                         data={heatMapData}
                         margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
                         valueFormat=">-.2s"
+                        theme={{
+                          axis: {
+                            ticks: {
+                              text: {
+                                fill: "#fff", // White axis tick text
+                                fontSize: 12, // Adjust font size if needed
+                              },
+                            },
+                            legend: {
+                              text: {
+                                fill: "#fff", // White axis legend text
+                              },
+                            },
+                          },
+                          legends: {
+                            text: {
+                              fill: "#fff", // White legend text
+                            },
+                          },
+                        }}
                         axisTop={{
                           tickSize: 5,
                           tickPadding: 5,
@@ -400,6 +418,7 @@ const DescriptionCard = () => {
                           {
                             anchor: "bottom",
                             translateX: 0,
+                            fill: "#fff",
                             translateY: 30,
                             length: 400,
                             thickness: 8,
@@ -417,6 +436,7 @@ const DescriptionCard = () => {
                         // tooltip={(cell) => `${cell?.id}`}
                       />
                     )}
+                    {sectionId === 4 && <GeoChart />}
                   </div>
                   <div className="absolute bottom-4 left-4 flex items-center space-x-2">
                     <span>Sector</span>
@@ -468,7 +488,7 @@ const DescriptionCard = () => {
           {categoriesData?.[sectionId - 1]?.title} Dashboard
         </h2>
         <p className="p-4 font-semibold text-2xl text-red-500 text-center">
-        External data dashboard is under development.
+          External data dashboard is under development.
         </p>
       </div>
     );
