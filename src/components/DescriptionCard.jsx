@@ -138,8 +138,35 @@ const DescriptionCard = () => {
       },
     ],
     profiles: {
-      about:
-        "Brazil, with a GDP of $2.2 trillion in 2024 and a population of 216 million, stands as a vital economic powerhouse in Latin America. The country's key industries include agriculture, energy, mining, manufacturing, and tourism, all of which contribute significantly to its economic growth. Brazil's investment climate is shaped by its strategic location as a gateway to Latin America, abundant natural resources, a robust renewable energy sector, and a growing middle class. Despite challenges in ease of doing business (ranked 124th globally), the nation holds a competitive position, ranking 57th on the global competitiveness index. Brazil's economy thrives on its key exports, including soybeans, iron ore, and petroleum, while renewable energy projects, infrastructure development, and the expansion of agribusiness are driving future growth.",
+      about: (
+        <div className="text-white text-left p-4 font-sans">
+          <p className="mb-2 leading-relaxed">
+            Brazil, with a GDP of $2.2 trillion in 2024 and a population of 216
+            million, stands as a vital economic powerhouse in Latin America.
+          </p>
+          <p className="mb-2 leading-relaxed">
+            The country's key industries include agriculture, energy, mining,
+            manufacturing, and tourism, all of which contribute significantly to
+            its economic growth.
+          </p>
+          <p className="mb-2 leading-relaxed">
+            Brazil's investment climate is shaped by its strategic location as a
+            gateway to Latin America, abundant natural resources, a robust
+            renewable energy sector, and a growing middle class.
+          </p>
+          <p className="mb-2 leading-relaxed">
+            Despite challenges in ease of doing business (ranked 124th
+            globally), the nation holds a competitive position, ranking 57th on
+            the global competitiveness index.
+          </p>
+          <p className="mb-2 leading-relaxed">
+            Brazil's economy thrives on its key exports, including soybeans,
+            iron ore, and petroleum, while renewable energy projects,
+            infrastructure development, and the expansion of agribusiness are
+            driving future growth.
+          </p>
+        </div>
+      ),
       total_services: "124",
       total_goods: "111",
       total_investment: "130M",
@@ -325,10 +352,8 @@ const DescriptionCard = () => {
 
             <div className="flex w-full p-6 gap-6">
               {/* About Sector */}
-              <div
-                style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                className="flex flex-col w-2/6 rounded-lg shadow-lg p-4 space-y-2 border"
-              >
+
+              <div className="flex flex-col w-2/6 rounded-lg shadow-lg p-4 space-y-2 border bg-[#0000001a]">
                 <p className="text-gray-100 text-base font-sans text-left leading-loose">
                   {sectionId === 1
                     ? sectionCardsData?.sector_analysis?.about
@@ -470,38 +495,37 @@ const DescriptionCard = () => {
               </div>
 
               {/* Metadata */}
-              <div
-                style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                className="w-[340px] shadow-lg rounded-lg p-4 space-y-4 flex justify-between flex-col"
-              >
-               {sectionId === 4 && <div className="w-full">
-                  <h2 class="text-xl font-bold text-center text-gray-100 mb-3">
-                    Transportation Insights
-                  </h2>
+              <div className="w-[340px] shadow-lg rounded-lg p-4 space-y-4  flex justify-between flex-col border bg-[#0000001a]">
+                {sectionId === 4 && (
+                  <div className="w-full">
+                    <h2 class="text-xl font-bold text-left text-gray-100 mb-3">
+                      Transportation Insights
+                    </h2>
 
-                  <ul class="list-disc list-inside space-y-2 text-gray-200">
-                    <li class="text-base">
-                      Countries like <b>Japan</b> and <b>Norway</b> favor
-                      eco-friendly transportation modes (Trains, Mopeds).
-                    </li>
+                    <ul class="list-disc list-inside space-y-2 text-gray-200">
+                      <li class="text-base">
+                        Countries like <b>Japan</b> and <b>Norway</b> favor
+                        eco-friendly transportation modes (Trains, Mopeds).
+                      </li>
 
-                    <li class="text-base">
-                      The <b>US</b> shows strong reliance on Subway systems but
-                      struggles with Cars and Boats.
-                    </li>
+                      <li class="text-base">
+                        The <b>US</b> shows strong reliance on Subway systems
+                        but struggles with Cars and Boats.
+                      </li>
 
-                    <li class="text-base">
-                      European countries like <b>France</b> and <b>Germany</b>{" "}
-                      showcase diverse results, often highlighting
-                      inefficiencies in Boat and Moto use.
-                    </li>
+                      <li class="text-base">
+                        European countries like <b>France</b> and <b>Germany</b>{" "}
+                        showcase diverse results, often highlighting
+                        inefficiencies in Boat and Moto use.
+                      </li>
 
-                    <li class="text-base">
-                      <b>Iceland</b> and <b>Vietnam</b> emphasize sustainable
-                      options such as Bicycles.
-                    </li>
-                  </ul>
-                </div>}
+                      <li class="text-base">
+                        <b>Iceland</b> and <b>Vietnam</b> emphasize sustainable
+                        options such as Bicycles.
+                      </li>
+                    </ul>
+                  </div>
+                )}
 
                 <div>
                   <div className="flex text-sm gap-2 mb-1">
