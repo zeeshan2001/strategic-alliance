@@ -148,16 +148,35 @@ const DetailsModal: React.FC<EmployeeHandbookModalProps> = ({
           )}
 
           {(sectionId === 6 || sectionId === 7 || sectionId === 3) && (
-            <p
+            <div
               style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
               className="rounded-xl shadow-lg border p-4 w-1/2 text-white font-extralight text-sm"
             >
-              We are thrilled to have you on board and look forward to seeing
-              you thrive in our team. <br />
-              <br /> This handbook is designed to familiarize you with our
-              company policies, culture, and guidelines to ensure a smooth and
-              rewarding experience.
-            </p>
+              <div className="mb-2">
+                We are thrilled to have you on board and look forward to seeing
+                you thrive in our Team
+              </div>
+              <div className="mb-4">
+                This handbook is designed to familiarize you with our company
+                policies, culture, and guidelines to ensure a smooth and
+                rewarding experience.
+              </div>
+              <p className="mb-2">
+                The document consists of following sections.
+              </p>
+              <ul className="list-disc space-y-2 pl-4">
+                <li>Introduction</li>
+                <li>Company Overview</li>
+                <li>Employment Policies</li>
+                <li>Compensation and Benefits</li>
+                <li>Code of Conduct</li>
+                <li>Leave Policies</li>
+                <li>Performance and Development</li>
+                <li>Disciplinary Procedures</li>
+                <li>Technology and Security</li>
+                <li>Employee Recognition and Rewards</li>
+              </ul>
+            </div>
           )}
           {sectionId === 5 && (
             <div className="bg-teal-900 p-6 rounded-lg shadow-lg w-1/2 text-white">
