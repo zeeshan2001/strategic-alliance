@@ -11,6 +11,16 @@ module.exports = {
       spacing: {
         "4rem": "4rem",
       },
+      // keyframes: {
+      //   rotatePie: {
+      //     "0%": {
+      //       transform: "rotate(0deg)", // Starts with no rotation
+      //     },
+      //     "100%": {
+      //       transform: "rotate(360deg)", // Ends with a full rotation (360 degrees)
+      //     },
+      //   },
+      // },
     },
   },
   plugins: [],

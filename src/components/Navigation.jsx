@@ -28,7 +28,7 @@ const Navigation = () => {
                     <h3 className="text-lg text-white">{sub.title}</h3>
                     <ul className="space-y-1 pl-5 mt-2 list-disc w-full">
                       {sub.items.map((item) => (
-                        <li key={item.id}>
+                        <li key={item.id} className="font-normal">
                           <NavigationMenuLink
                             href={`#${item.id}`}
                             className="text-sm text-white hover:underline w-full"

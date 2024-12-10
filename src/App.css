@@ -12,12 +12,13 @@
   padding: 1rem;
 } */
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden; /* Prevent scrolling the entire page */
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background: #343537;
 }
 
@@ -27,7 +28,11 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #2a003e, #003e76); /* Background gradient */
+  background: linear-gradient(
+    135deg,
+    #2a003e,
+    #003e76
+  ); /* Background gradient */
   z-index: -1; /* Puts the background behind the content */
 }
 
@@ -35,7 +40,11 @@ body, html {
   position: absolute;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(128, 0, 255, 0.7) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(128, 0, 255, 0.7) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
   filter: blur(100px);
   border-radius: 50%;
   pointer-events: none;
@@ -66,7 +75,21 @@ body, html {
   z-index: 1; /* Ensures the content stays above the background */
 }
 
-.content h1, .content p {
+.content h1,
+.content p {
   margin-bottom: 2rem;
   text-align: center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating-container {
+  animation: rotate 2s ease-in-out forwards; /* 2 seconds, ease-in-out for smooth start/end */
 }

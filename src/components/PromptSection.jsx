@@ -60,7 +60,9 @@ const historyData = [
 
 const citationData = [
   <img src="/images/citation.png" alt="Citation" />,
-  <h3 className="text-white text-lg font-bold p-3 mt-5 bg-[#ffffff1a]">Related</h3>,
+  <h3 className="text-white text-lg font-bold p-3 mt-5 bg-[#ffffff1a]">
+    Related
+  </h3>,
   <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
     How will the National Investment Strategy impact Saudi Arabia's economy by
     2030
@@ -93,31 +95,26 @@ const PromptSection = () => {
   const [citationOutput, setCitationOutput] = useState([]);
 
   const loadingSteps = [
-    <h2 className="font-bold text-xl mb-4 mt-[10px]">Search</h2>,
-    <div>
-      <strong>
-        Searching internal repositories for: Information about MISA in Saudi
-        Arabia
-      </strong>
+    <h2 className="font-bold text-[16px] mb-4 mt-[5px]">
+      Generating Response
+    </h2>,
+    <div className="font-semibold text-[14px]">
+      Searching internal repositories for: Information about MISA in Saudi
+      Arabia
     </div>,
     <div className="font-light italic mb-5 text-[12px]">
       Scanning local documents, data repositories, and internal systems...
     </div>,
     <div className="mt-3">
-      <div>
-        <strong>Summarizing NATIONAL INVESTMENT STRATEGY</strong>
+      <div className="font-semibold text-[14px]">
+        Summarizing NATIONAL INVESTMENT STRATEGY
       </div>
       <div className="font-light italic mb-5 text-[12px]">
         Collecting insights from internal knowledge bases and relevant files...
       </div>
     </div>,
     <div className="mt-3">
-      <div>
-        <strong>Status Messages</strong>
-      </div>
-      <div className="mt-2">
-        <strong>Status Messages</strong>
-      </div>
+      <div className="font-semibold text-[14px] mt-2">Status Messages</div>
       <ul className="font-light italic list-disc ml-3 mb-5 text-[12px]">
         <li>Currently processing..</li>
         <li>Scanning results...</li>
@@ -176,17 +173,44 @@ const PromptSection = () => {
   };
 
   return (
-    <div className="w-full flex flex-row gap-4 mt-[150px] pt-[50px] pb-20 px-10 mx-auto">
-      <div
-        style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-        className="h-1/5 flex flex-col min-h-96 bg-slate-500 gap-5 p-6 rounded shadow-lg"
-      >
-        <p className="text-white cursor-pointer underline hover:no-underline">Ask a new question</p>
-        <p className="text-white cursor-pointer underline hover:no-underline">History</p>
-        <p className="text-white cursor-pointer underline hover:no-underline">Data provenance</p>
-
+    <div className="w-full flex flex-row gap-4 mt-[150px] pt-[50px] pb-20 px-10 mx-auto text-white">
+      <div className="h-1/4 shrink-0 min-h-96 rounded shadow-lg max-w-[250px]">
+        <div className="mb-5 bg-[#ffffff1a] p-5">
+          <p className=" cursor-pointer underline hover:no-underline">
+            Ask a new question
+          </p>
+          <p className="cursor-pointer underline hover:no-underline">History</p>
+          <p className="cursor-pointer underline hover:no-underline">
+            Data provenance
+          </p>
+        </div>
+        <div className="p-5 bg-[#ffffff1a]">
+          <h2 className="mb-5 font-bold text-[18px]">Chat History</h2>
+          <h3 className="mb-3 font-bold text-[16px]">FDI and Investments</h3>
+          <ul className="space-y-1 list-disc px-4">
+            <li>Focus: infrastructure, tech, healthcare, energy.</li>
+            <li>•FDI process and incentives.</li>
+            <li>•Target: GCC, Europe Investors.</li>
+            <li>•Key investment opportunities.</li>
+            <li>•Investor tracking and engagement.</li>
+          </ul>
+          <h3 className="mb-3 mt-5 font-bold text-[16px]">Opportunities</h3>
+          <ul className="space-y-1 list-disc px-4">
+            <li>Prioritize growth sectors (renewable energy, ICT).</li>
+            <li>Foster international-local business collaboration.</li>
+            <li>Compliance: regulatory requirements.</li>
+            <li>License renewals and updates.</li>
+          </ul>
+          <h3 className="mb-3 mt-5 font-bold text-[16px]">
+            Licensing Related Procedures
+          </h3>
+          <ul className="space-y-1 list-disc px-4">
+            <li>Compliance: regulatory requirements.</li>
+            <li>License renewals and updates.</li>
+          </ul>
+        </div>
       </div>
-      <div className="w-2/5 max-w-3xl font-poppins">
+      <div className="flex-grow max-w-3xl font-poppins">
         <div className="flex flex-col gap-5">
           <h3 className="text-white text-lg font-bold">
             How can I assist you today?
@@ -207,9 +231,7 @@ const PromptSection = () => {
             <div
               className={`outline-none transition-all duration-300 ease-in-out hover:border-green-500`}
             >
-              <div
-              className={` ${loading || loadingCompleted ? 'p-4' : ''}`}
-              style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
+              <div className={` ${loading || loadingCompleted ? "px-4" : ""}`}>
                 {loading && <h4 className="text-green-500">Loading...</h4>}
                 {loadingMessages.map((message, index) => (
                   <p
@@ -222,8 +244,12 @@ const PromptSection = () => {
                   </p>
                 ))}
               </div>
-              <div className={`text-white mt-5 ${!loading && loadingCompleted ? 'p-4' : ''}`}
-              style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
+              <div
+                className={`text-white ${
+                  !loading && loadingCompleted ? "p-4" : ""
+                }`}
+                style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+              >
                 {output.map((line, index) => (
                   <p key={index}>{line}</p>
                 ))}
@@ -232,7 +258,7 @@ const PromptSection = () => {
           </div>
         </div>
       </div>
-      <div className="w-2/5 max-w-3xl font-poppins">
+      <div className="flex-grow max-w-3xl font-poppins">
         <h3 className="text-white text-lg font-bold mb-5">Citation</h3>
         <div>
           {citationOutput.map((item, index) => (

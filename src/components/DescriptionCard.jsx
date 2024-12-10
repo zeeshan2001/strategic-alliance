@@ -148,7 +148,7 @@ const DescriptionCard = () => {
     return (
       <div className="bg-[#343537] w-full p-14">
         <h2 className="p-4 font-bold text-4xl text-white text-center mb-10">
-          {categoriesData?.[sectionId - 1]?.title} Dashboard
+          {categoriesData?.[sectionId - 1]?.title}
         </h2>
         {sectionId === 6 ||
         sectionId === 7 ||
@@ -262,7 +262,7 @@ const DescriptionCard = () => {
             />
           </div>
         ) : (
-          <div className="flex flex-col h-screen text-white w-full mx-auto">
+          <div className="flex flex-col text-white w-full mx-auto">
             {/* Header */}
 
             {sectionId === 4 && (
@@ -485,10 +485,10 @@ const DescriptionCard = () => {
     return (
       <div className="bg-[#343537] w-full p-14">
         <h2 className="p-4 font-bold text-4xl text-white text-center">
-          {categoriesData?.[sectionId - 1]?.title} Dashboard
+          {categoriesData?.[sectionId - 1]?.title}
         </h2>
         <p className="p-4 font-semibold text-2xl text-red-500 text-center">
-          External data dashboard is under development.
+          External Data is under development.
         </p>
       </div>
     );
