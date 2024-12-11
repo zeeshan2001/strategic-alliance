@@ -63,20 +63,20 @@ const citationData = [
   <h3 className="text-white text-lg font-bold p-3 mt-5 bg-[#ffffff1a]">
     Related
   </h3>,
-  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
+  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a] hover:bg-[#0000001a]">
     How will the National Investment Strategy impact Saudi Arabia's economy by
     2030
   </p>,
-  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
+  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a] hover:bg-[#0000001a]">
     What are the main sectors targeted by the National Investment Strategy
   </p>,
-  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
+  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a] hover:bg-[#0000001a]">
     How does the National Investment Strategy align with Vision 2030
   </p>,
-  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
+  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a] hover:bg-[#0000001a]">
     What measures are being taken to attract foreign direct investment
   </p>,
-  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a]">
+  <p className="text-white border-t border-gray-300 border-solid cursor-pointer p-3 bg-[#ffffff1a] hover:bg-[#0000001a]">
     How will the strategy enhance innovation and local content development
   </p>,
 ];
