@@ -162,7 +162,7 @@ const Chart = () => {
             ({ centerX, centerY }) => (
               <g transform={`translate(${centerX}, ${centerY})`}>
                 <image
-                  href="/images/investoLogo.svg"
+                  href="/images/brain.png"
                   className="hover:scale-110 transition-all duration-300 cursor-pointer"
                   width="150"
                   height="150"

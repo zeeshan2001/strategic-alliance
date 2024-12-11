@@ -18,7 +18,7 @@ const Header = () => {
         <div className="flex-shrink">
           <h1 className="text-2xl font-bold">
             <img
-              style={{ width: "215px" }}
+              style={{ width: "185px", maxWidth: "fit-content" }}
               src="/images/investoLogo.svg"
               alt="Investo Logo"
             />

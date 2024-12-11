@@ -460,7 +460,7 @@ const DescriptionCard = () => {
                   {/* <h3 className="absolute top-2 left-4 font-medium">Map\Graph</h3> */}
                   <div className="w-full h-[480px] flex items-center justify-center text-black">
                     {sectionId === 1 && (
-                      <div className="h-[430px] w-full text-black">
+                      <div className="h-[480px] w-full text-black">
                         <ResponsiveHeatMap
                           data={heatMapData}
                           margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
@@ -519,25 +519,25 @@ const DescriptionCard = () => {
                             maxValue: 100000,
                           }}
                           emptyColor="#555555"
-                          legends={[
-                            {
-                              anchor: "bottom",
-                              translateX: 0,
-                              fill: "#fff",
-                              translateY: 30,
-                              length: 400,
-                              thickness: 8,
-                              direction: "row",
-                              tickPosition: "after",
-                              tickSize: 3,
-                              tickSpacing: 4,
-                              tickOverlap: false,
-                              tickFormat: ">-.2s",
-                              title: "Value →",
-                              titleAlign: "start",
-                              titleOffset: 4,
-                            },
-                          ]}
+                          // legends={[
+                          //   {
+                          //     anchor: "bottom",
+                          //     translateX: 0,
+                          //     fill: "#fff",
+                          //     translateY: 30,
+                          //     length: 400,
+                          //     thickness: 8,
+                          //     direction: "row",
+                          //     tickPosition: "after",
+                          //     tickSize: 3,
+                          //     tickSpacing: 4,
+                          //     tickOverlap: false,
+                          //     tickFormat: ">-.2s",
+                          //     title: "Value →",
+                          //     titleAlign: "start",
+                          //     titleOffset: 4,
+                          //   },
+                          // ]}
                           // tooltip={(cell) => `${cell?.id}`}
                         />
                       </div>
